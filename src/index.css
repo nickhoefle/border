@@ -15,3 +15,7 @@ code {
 .leaflet-interactive {
   outline: none;
 }
+
+.leaflet-container {
+  height: 100vh !important;
+}
