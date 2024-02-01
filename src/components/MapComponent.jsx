@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useMemo } from 'react';
-import { MapContainer, GeoJSON } from 'react-leaflet';
+import { MapContainer, GeoJSON, Tooltip } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import encountersByCountryData from '../data/FY07-23.json';
 
@@ -33,8 +33,6 @@ const MapComponent = () => {
         layer.setStyle({
             fillOpacity: 1,
         });
-
-        layer.bindTooltip(`<strong>${layer.feature.properties.name}</strong><br />Custom Value: ${layer.feature.properties.customValue}`).openTooltip();
     }, []);
 
     const handleMouseOut = useCallback((event) => {
@@ -42,8 +40,6 @@ const MapComponent = () => {
         layer.setStyle({
             fillOpacity: 0.7,
         });
-
-        layer.closeTooltip();
     }, []);
 
     useEffect(() => {
@@ -57,7 +53,6 @@ const MapComponent = () => {
             zoom={2}
             style={{ height: '500px', width: '100%' }}
         >
-`1`
             <GeoJSON
                 data={worldMapGeoJSONData}
                 style={(feature) => ({
@@ -73,6 +68,9 @@ const MapComponent = () => {
                         mouseover: handleMouseOver,
                         mouseout: handleMouseOut,
                     });
+                    layer.bindTooltip(
+                        `<strong>${feature.properties.name}</strong><br />Custom Value: ${feature.properties.customValue}`
+                    );
                 }}
             />
         </MapContainer>

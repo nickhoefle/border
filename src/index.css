@@ -19,3 +19,12 @@ code {
 .leaflet-container {
   height: 100vh !important;
 }
+
+#yearSlider {
+  color: black;
+}
+
+#yearSliderWrapper {
+  display: flex;
+  justify-content: center;
+}
