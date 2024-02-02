@@ -9,8 +9,8 @@ function valuetext(value) {
 
 const RangeSlider = () => {
     const MIN = 2007;
-    const MAX = 2023;
-    const [value, setValue] = useState([MIN, MAX]);
+    const MAX = 2024;
+    const [value, setValue] = useState([2023,2024]); //DEFAULT
 
     const handleChange = (_, newValue) => {
         setValue(newValue);
