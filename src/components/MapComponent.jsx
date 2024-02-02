@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import encountersByCountryData from '../data/FY07-23.json';
 import worldMapGeoJSONData from '../world.geo.json';
 
-const MapComponent = ({ startYear, endYear }) => {
+const MapComponent = ({ startYear = 2007, endYear = 2023 }) => {
     const featureData = useMemo(() => {
         const uniqueCountries = new Set();
         const encounterByCountry = {};
