@@ -1,3 +1,4 @@
+// RangeSlider component
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -10,15 +11,15 @@ function valuetext(value) {
 const RangeSlider = () => {
     const MIN = 2007;
     const MAX = 2024;
-    const [value, setValue] = useState([2023,2024]); //DEFAULT
+    const [value, setValue] = useState([2023, 2024]); //DEFAULT
 
     const handleChange = (_, newValue) => {
         setValue(newValue);
     };
 
     return (
-        <div>
-            <Box sx={{ width: '50vw' }}>
+        <div style={{ position: 'fixed', top: 0, width: '100%', textAlign: 'center', zIndex: 1 }}>
+            <Box sx={{ width: '50vw', margin: '0 auto' }}>
                 <Slider
                     id="yearSlider"
                     getAriaLabel={() => 'Year range'}

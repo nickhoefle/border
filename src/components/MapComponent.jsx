@@ -1,11 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import encountersByCountryData from '../data/FY07-23.json';
 import worldMapGeoJSONData from '../world.geo.json';
+import PerYearChart from './PerYearChart';
 
 const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
-    console.log(startYear, endYear)
+    const [hoveredCountry, setHoveredCountry] = useState(null);
+
     const featureData = useMemo(() => {
         const uniqueCountries = new Set();
         const encounterByCountry = {};
@@ -36,25 +38,55 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
         return worldMapGeoJSONData;
     }, [startYear, endYear]);
 
+    const handleFeatureHover = (feature) => {
+        const countryName = feature.properties.name.toUpperCase();
+        setHoveredCountry({
+            name: countryName,
+            customValue: feature.properties.customValue,
+        });
+    };
+
+    const handleFeatureLeave = () => {
+        setHoveredCountry(null);
+    };
+
     return (
-        <MapContainer center={[0, 0]} zoom={2} style={{ height: '500px', width: '100%' }}>
-            <GeoJSON
-                data={featureData}
-                style={(feature) => ({
-                    fillColor: `rgba(0, 128, 0, ${feature.properties.customValue / 100})`,
-                    weight: 1,
-                    opacity: 1,
-                    color: 'black',
-                    dashArray: '0',
-                    fillOpacity: 0.7,
-                })}
-                onEachFeature={(feature, layer) => {
-                    layer.bindTooltip(
-                        `<strong>${feature.properties.name}</strong><br />Custom Value: ${feature.properties.customValue}`
-                    );
-                }}
-            />
-        </MapContainer>
+        <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
+            <MapContainer center={[0, 0]} zoom={2} style={{ height: '80vh', width: '100%' }}>
+                <GeoJSON
+                    data={featureData}
+                    style={(feature) => ({
+                        fillColor: `rgba(0, 128, 0, ${feature.properties.customValue / 100})`,
+                        weight: 1,
+                        opacity: 1,
+                        color: 'black',
+                        dashArray: '0',
+                        fillOpacity: 0.7,
+                    })}
+                    onEachFeature={(feature, layer) => {
+                        layer.on({
+                            mouseover: () => handleFeatureHover(feature),
+                            mouseout: handleFeatureLeave,
+                        });
+                    }}
+                />
+            </MapContainer>
+            {hoveredCountry && (
+                <div
+                    style={{
+                        position: 'fixed',
+                        bottom: 0,
+                        left: 0,
+                        width: '100%',
+                        background: '#fff',
+                        padding: '10px',
+                        borderTop: '1px solid #ccc',
+                    }}
+                >
+                    <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear} />
+                </div>
+            )}
+        </div>
     );
 };
 

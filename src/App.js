@@ -8,7 +8,6 @@ function App() {
       <div id="yearSliderWrapper">
         <RangeSlider />
       </div>
-      <MapComponent />
     </div>
   );
 }
