@@ -24,14 +24,16 @@ code {
   color: black;
 }
 
-#yearSliderWrapper {
-  display: flex;
-  justify-content: center;
-}
-
 .custom-label {
   background-color: white;
   padding: 5px;
   border: 1px solid #333;
   border-radius: 5px;
+}
+
+#yearSliderWrapper {
+  position: fixed;
+  top: 0; 
+  width: 100%; 
+  z-index: 1;
 }

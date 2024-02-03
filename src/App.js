@@ -5,9 +5,7 @@ import RangeSlider from './components/RangeSlider';
 function App() {
   return (
     <div className="App">
-      <div id="yearSliderWrapper">
-        <RangeSlider />
-      </div>
+      <RangeSlider />
     </div>
   );
 }

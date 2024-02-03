@@ -28,11 +28,16 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
 
         worldMapGeoJSONData.features.forEach((feature) => {
             const countryName = feature.properties.name.toUpperCase();
+            const nameEn = feature.properties.name_en; // Extracting name_en property
+        
             if (uniqueCountries.has(countryName)) {
                 feature.properties.customValue = encounterByCountry[countryName] || 0;
             } else {
                 feature.properties.customValue = 0;
             }
+        
+            // Now you can use the 'nameEn' variable as needed in your loop
+            console.log(nameEn);
         });
 
         return worldMapGeoJSONData;
@@ -83,7 +88,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
                         borderTop: '1px solid #ccc',
                     }}
                 >
-                    <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear} />
+                    <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear}/>
                 </div>
             )}
         </div>
