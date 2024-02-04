@@ -8,11 +8,24 @@ import PerYearChart from './PerYearChart';
 const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
+    const handleFeatureHover = (feature) => {
+        const countryName = feature.properties.name.toUpperCase();
+        setHoveredCountry({
+            name: countryName,
+            customValue: feature.properties.customValue,
+        });
+    };
+
+    const handleFeatureLeave = () => {
+        setHoveredCountry(null);
+    };
+
     const featureData = useMemo(() => {
         const uniqueCountries = new Set();
         const encounterByCountry = {};
 
         encountersByCountryData.forEach((row) => {
+            
             const citizenship = row.Citizenship;
             if (!uniqueCountries.has(citizenship)) {
                 uniqueCountries.add(citizenship);
@@ -28,32 +41,16 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
 
         worldMapGeoJSONData.features.forEach((feature) => {
             const countryName = feature.properties.name.toUpperCase();
-            const nameEn = feature.properties.name_en; // Extracting name_en property
         
             if (uniqueCountries.has(countryName)) {
                 feature.properties.customValue = encounterByCountry[countryName] || 0;
             } else {
                 feature.properties.customValue = 0;
             }
-        
-            // Now you can use the 'nameEn' variable as needed in your loop
-            console.log(nameEn);
         });
 
         return worldMapGeoJSONData;
     }, [startYear, endYear]);
-
-    const handleFeatureHover = (feature) => {
-        const countryName = feature.properties.name.toUpperCase();
-        setHoveredCountry({
-            name: countryName,
-            customValue: feature.properties.customValue,
-        });
-    };
-
-    const handleFeatureLeave = () => {
-        setHoveredCountry(null);
-    };
 
     return (
         <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
