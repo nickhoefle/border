@@ -67,16 +67,19 @@ const PerYearChart = ({ country, startYear, endYear }) => {
     ];
 
     return (
-        <div>
-            <img
-                src={`/flags/${countryName}.png`}
-                alt={`Flag of ${countryName}`}
-                style={{ height: '50px', width: 'auto', outline: '2px solid black' }}
-                />
-            <h1> CITIZENSHIP - {countryName}</h1>
-            {/* Your chart rendering code goes here based on sortedYearsObject */}
-            <strong>ENCOUNTERS: {customValue.toLocaleString()}</strong>
+        <div id="hoverWrapper">
+            <div id="nameAndCitizenshipWrapper">
+                <img
+                    src={`/flags/${countryName}.png`}
+                    alt={`Flag of ${countryName}`}
+                    style={{ height: '100px', width: 'auto', outline: '2px solid black' }}
+                    />
+                <h1 id="countryName">{countryName}</h1>
+                <h2 id="encountersText">{customValue.toLocaleString()}</h2>
+                <strong id="nationwideEncountersText">NATIONWIDE ENCOUNTERS</strong>
+            </div>
             <ReactApexChart
+                id="lineGraph"
                 options={chartOptions}
                 series={chartSeries}
                 type="line"

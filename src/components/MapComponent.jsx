@@ -21,16 +21,17 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
     };
 
     const featureData = useMemo(() => {
+        
         const uniqueCountries = new Set();
         const encounterByCountry = {};
-
+        
         encountersByCountryData.forEach((row) => {
             
             const citizenship = row.Citizenship;
             if (!uniqueCountries.has(citizenship)) {
                 uniqueCountries.add(citizenship);
             }
-
+            
             if (
                 parseInt(row["Fiscal Year"]) >= parseInt(startYear) &&
                 parseInt(row["Fiscal Year"]) <= parseInt(endYear)
@@ -41,7 +42,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
 
         worldMapGeoJSONData.features.forEach((feature) => {
             const countryName = feature.properties.name.toUpperCase();
-        
+            
             if (uniqueCountries.has(countryName)) {
                 feature.properties.customValue = encounterByCountry[countryName] || 0;
             } else {

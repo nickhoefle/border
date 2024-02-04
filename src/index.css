@@ -24,6 +24,11 @@ code {
   color: black;
 }
 
+#countryName {
+  margin:0 0 4px 0;
+  padding:0;
+}
+
 .custom-label {
   background-color: white;
   padding: 5px;
@@ -36,4 +41,31 @@ code {
   top: 0; 
   width: 100%; 
   z-index: 1;
+}
+
+#hoverWrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 15vw 10px 15vw;
+}
+
+#lineGraph {
+  width: 80vw;
+}
+
+#nameAndCitizenshipWrapper {
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#encountersText {
+  margin:0;
+}
+
+#nationwideEncountersText {
+  font-size: 12px;
 }
