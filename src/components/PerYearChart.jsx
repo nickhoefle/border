@@ -6,6 +6,8 @@ const PerYearChart = ({ country, startYear, endYear }) => {
     const customValue = country.customValue;
     const uniqueYears = [];
     
+    console.log(country)
+
     for (let i=startYear; i<=endYear; i++) {
         uniqueYears.push(i);
     }
@@ -70,10 +72,10 @@ const PerYearChart = ({ country, startYear, endYear }) => {
         <div id="hoverWrapper">
             <div id="nameAndCitizenshipWrapper">
                 <img
-                    src={`/flags/${countryName}.png`}
+                    src={`/flags/${countryName.replace(/\s/g, "")}.png`}
                     alt={`Flag of ${countryName}`}
                     style={{ height: '100px', width: 'auto', outline: '2px solid black' }}
-                    />
+                />
                 <h1 id="countryName">{countryName}</h1>
                 <h2 id="encountersText">{customValue.toLocaleString()}</h2>
                 <strong id="nationwideEncountersText">NATIONWIDE ENCOUNTERS</strong>
