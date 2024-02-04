@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import encountersByCountryData from '../data/FY07-23.json';
 import worldMapGeoJSONData from '../world.geo.json';
 import PerYearChart from './PerYearChart';
+import zIndex from '@mui/material/styles/zIndex';
 
 const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
@@ -55,7 +56,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
 
     return (
         <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
-            <MapContainer center={[0, 0]} zoom={2} style={{ height: '80vh', width: '100%' }}>
+            <MapContainer center={[0, 0]} zoom={2} style={{ height: '80vh', width: '100%', zIndex: 1 }}>
                 <GeoJSON
                     data={featureData}
                     style={(feature) => ({
@@ -84,6 +85,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
                         background: '#fff',
                         padding: '10px',
                         borderTop: '1px solid #ccc',
+                        zIndex: 2
                     }}
                 >
                     <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear}/>
