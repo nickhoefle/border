@@ -64,7 +64,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
                         opacity: 1,
                         color: 'black',
                         dashArray: '0',
-                        fillOpacity: 0.7,
+                        fillOpacity: 1,
                     })}
                     onEachFeature={(feature, layer) => {
                         layer.on({
