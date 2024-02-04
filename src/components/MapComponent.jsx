@@ -59,7 +59,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
                 <GeoJSON
                     data={featureData}
                     style={(feature) => ({
-                        fillColor: `rgba(0, 128, 0, ${feature.properties.customValue / 100})`,
+                        fillColor: feature.properties.name.toUpperCase() === (hoveredCountry?.name || '').toUpperCase() ? 'black' : `rgba(0, 128, 0, ${feature.properties.customValue / 100})`,
                         weight: 1,
                         opacity: 1,
                         color: 'black',
