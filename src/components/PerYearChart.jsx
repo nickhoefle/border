@@ -27,7 +27,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
     const sortedEncountersArray = Object.keys(sortedYearsObject).map(key => sortedYearsObject[key]);
 
     const chartOptions = {
-        colors: ['black'],
+        colors:['black', 'black', 'black', 'black', 'black', 'black'],
         chart: {
             toolbar: {
                 show: false,
@@ -35,26 +35,50 @@ const PerYearChart = ({ country, startYear, endYear }) => {
         },
         xaxis: {
             categories: uniqueYears,
+            offsetY: 5,
             labels: {
                 style: {
                     colors: 'black',
-                    fontSize: '12px'
+                    fontSize: '14px',
+                    fontWeight: 'bold',
                 },
             },
         },
         yaxis: {
             labels: {
+                offsetX: -3,
                 style: {
                     colors: 'black', 
-                    fontSize: '14px'
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    fontSize: '14px',   
                 },
                 formatter: function (value) {
-                    return Math.round(value); 
+                    if (value == 0) {
+                        return;
+                    }
+                    return Math.round(value).toLocaleString(); 
                 }
             },
+            axisBorder: {
+                show: false,
+            },
+            tickAmount: 4,
         },
         markers: {
-            size: 8,
+            size: 5,
+        },
+        dataLabels: {
+            enabled: true,
+            offsetY: -5,
+            offsetX: 0,
+            style: {
+                fontWeight: 1,
+            },
+            background: { enabled: false },
+            formatter: function (val, opts) {
+                return val.toLocaleString()
+            },
         },
         stroke: {
             curve: 'smooth', // Set the curve style of the line
@@ -85,7 +109,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
                 options={chartOptions}
                 series={chartSeries}
                 type="line"
-                height={200}
+                height={220}
             />
         </div>
     );

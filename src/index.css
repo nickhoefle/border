@@ -46,15 +46,15 @@ code {
 #hoverWrapper {
   display: flex;
   flex-direction: row;
-  padding: 10px 15vw 10px 15vw;
+  padding: 10px 10vw 10px 10vw;
 }
 
 #lineGraph {
-  width: 80vw;
+  width: 85vw;
 }
 
 #nameAndCitizenshipWrapper {
-  width: 20vw;
+  width: 15vw;
   display: flex;
   justify-content: center;
   flex-direction: column;
