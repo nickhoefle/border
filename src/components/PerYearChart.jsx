@@ -6,8 +6,6 @@ const PerYearChart = ({ country, startYear, endYear }) => {
     const customValue = country.customValue;
     const uniqueYears = [];
     
-    console.log(country)
-
     for (let i=startYear; i<=endYear; i++) {
         uniqueYears.push(i);
     }
@@ -35,7 +33,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
         },
         xaxis: {
             categories: uniqueYears,
-            offsetY: 5,
+            offsetY: 12,
             labels: {
                 style: {
                     colors: 'black',
@@ -46,15 +44,15 @@ const PerYearChart = ({ country, startYear, endYear }) => {
         },
         yaxis: {
             labels: {
-                offsetX: -3,
+                offsetX: -12,
                 style: {
                     colors: 'black', 
                     fontSize: '14px',
-                    fontWeight: 'bold',
-                    fontSize: '14px',   
+                    fontWeight: 'bold', 
+                    textAlign: 'center' 
                 },
                 formatter: function (value) {
-                    if (value == 0) {
+                    if (value === 0) {
                         return;
                     }
                     return Math.round(value).toLocaleString(); 
@@ -66,7 +64,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
             tickAmount: 4,
         },
         markers: {
-            size: 5,
+            size: 3,
         },
         dataLabels: {
             enabled: true,
@@ -98,7 +96,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
                 <img
                     src={`/flags/${countryName.replace(/\s/g, "")}.png`}
                     alt={`Flag of ${countryName}`}
-                    style={{ height: '100px', width: 'auto', outline: '2px solid black' }}
+                    style={{ height: '150px', width: 'auto', outline: '2px solid black' }}
                 />
                 <h1 id="countryName">{countryName}</h1>
                 <h2 id="encountersText">{customValue.toLocaleString()}</h2>
