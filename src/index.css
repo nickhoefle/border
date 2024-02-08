@@ -1,3 +1,9 @@
+#app {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,7 +19,7 @@ code {
 }
 
 #countryName {
-  margin: 12px 0 4px 0;
+  margin: 0;
   padding:0;
 }
 
@@ -29,7 +35,7 @@ code {
 }
 
 #flagImage {
-  height: 150px;  
+  height: 130px;  
   width: auto; 
   outline: 2px solid black;
 }
@@ -39,11 +45,11 @@ code {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 10vw 10px 10vw;
+  padding: 10px 10vw 0 10vw;
 }
 
 .leaflet-container {
-  height: 100vh !important;
+  background-color: teal !important;
 }
 
 .leaflet-interactive {
@@ -67,13 +73,20 @@ code {
   font-size: 12px;
 }
 
+#titleText {
+  text-align: center;
+  margin: 4px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
 #yearSlider {
   color: black;
 }
 
 #yearSliderWrapper {
-  position: fixed;
-  top: 0; 
   width: 100%; 
   z-index: 1;
+  overflow: hidden;
 }

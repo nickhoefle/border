@@ -12,6 +12,12 @@ const RangeSlider = () => {
         setValue(newValue);
     };
 
+    const mapComponentElement = React.createElement(MapComponent, {
+        key: `${value[0]}-${value[1]}`,
+        startYear: value[0],
+        endYear: value[1],
+    });
+
     return (
         <div id="yearSliderWrapper">
             <Box sx={{ width: '50vw', margin: '0 auto' }}>
@@ -28,7 +34,6 @@ const RangeSlider = () => {
                     max={MAX}
                 />
             </Box>
-            <MapComponent key={`${value[0]}-${value[1]}`} startYear={value[0]} endYear={value[1]} />
         </div>
     );
 };

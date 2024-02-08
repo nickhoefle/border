@@ -30,6 +30,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
     const chartOptions = {
         colors:['black', 'black', 'black', 'black', 'black', 'black'],
         chart: {
+            fontFamily: `Segoe UI`,
             toolbar: {
                 show: false,
             },
@@ -103,7 +104,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
                 />
                 <h1 id="countryName">{countryName}</h1>
                 <h2 id="encountersText">{encounters.toLocaleString()}</h2>
-                <strong id="nationwideEncountersText">NATIONWIDE ENCOUNTERS</strong>
+                <strong id="nationwideEncountersText">NATIONWIDE ENCOUNTERS PER U.S. CBP DATA</strong>
             </div>
             <ReactApexChart
                 id="lineGraph"

@@ -54,8 +54,8 @@ const MapComponent = ({ startYear = 2014, endYear = 2024 }) => {
     }, [startYear, endYear]);
 
     return (
-        <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
-            <MapContainer center={[0, 0]} zoom={2} style={{ height: '80vh', width: '100%', zIndex: 1 }}>
+        <>
+            <MapContainer center={[25, 0]} zoom={2} style={{ height:'calc(89vh - 20px)', width: '100vw', zIndex: 1 }}>
                 <GeoJSON
                     data={featureData}
                     style={(feature) => ({
@@ -82,15 +82,16 @@ const MapComponent = ({ startYear = 2014, endYear = 2024 }) => {
                         left: 0,
                         width: '100%',
                         background: '#fff',
-                        padding: '10px',
+                        padding: '4px',
                         borderTop: '1px solid #ccc',
-                        zIndex: 2
+                        zIndex: 2,
+                        
                     }}
                 >
                     <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear} />
                 </div>
             )}
-        </div>
+        </>
     );
 };
 
