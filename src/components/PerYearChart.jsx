@@ -4,20 +4,23 @@ import ReactApexChart from 'react-apexcharts';
 const PerYearChart = ({ country, startYear, endYear }) => {
     const countryName = country.name;
     const customValue = country.customValue;
-    const uniqueYears = [];
+    const selectedYearRange = [];
     
     for (let i=startYear; i<=endYear; i++) {
-        uniqueYears.push(i);
+        selectedYearRange.push(i);
     }
 
-    const sortedYearsObject = uniqueYears.reduce((acc, year) => {
+    const sortedYearsObject = selectedYearRange.reduce((encounters, year) => {
         const numericYear = parseInt(year);
-        acc[numericYear] = 0;
-        return acc;
+        encounters[numericYear] = 0;
+        return encounters;
     }, {});
 
     encountersByCountryData.forEach((row) => {
-        if (uniqueYears.includes(row["Fiscal Year"]) && country.name.toUpperCase() === row["Citizenship"].toUpperCase()) {
+        if (
+            selectedYearRange.includes(row["Fiscal Year"]) && 
+            country.name.toUpperCase() === row["Citizenship"].toUpperCase()
+        ) {
             sortedYearsObject[row["Fiscal Year"]] += row["Encounter Count"];
         }
     });
@@ -32,7 +35,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
             },
         },
         xaxis: {
-            categories: uniqueYears,
+            categories: selectedYearRange,
             offsetY: 12,
             labels: {
                 style: {
@@ -79,13 +82,13 @@ const PerYearChart = ({ country, startYear, endYear }) => {
             },
         },
         stroke: {
-            curve: 'smooth', // Set the curve style of the line
-            width: 2, // Set the line width
+            curve: 'smooth',
+            width: 2,
         },
     };
     const chartSeries = [
         {
-            name: 'Goal Differential',
+            name: 'Encounters Per Year Per Country',
             data: sortedEncountersArray
         },
     ];
@@ -96,7 +99,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
                 <img
                     src={`/flags/${countryName.replace(/\s/g, "")}.png`}
                     alt={`Flag of ${countryName}`}
-                    style={{ height: '150px', width: 'auto', outline: '2px solid black' }}
+                    id="flagImage"
                 />
                 <h1 id="countryName">{countryName}</h1>
                 <h2 id="encountersText">{customValue.toLocaleString()}</h2>

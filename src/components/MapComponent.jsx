@@ -88,7 +88,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
                         zIndex: 2
                     }}
                 >
-                    <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear}/>
+                    <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear} />
                 </div>
             )}
         </div>

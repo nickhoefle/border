@@ -12,20 +12,8 @@ code {
     monospace;
 }
 
-.leaflet-interactive {
-  outline: none;
-}
-
-.leaflet-container {
-  height: 100vh !important;
-}
-
-#yearSlider {
-  color: black;
-}
-
 #countryName {
-  margin:0 0 4px 0;
+  margin: 12px 0 4px 0;
   padding:0;
 }
 
@@ -36,11 +24,14 @@ code {
   border-radius: 5px;
 }
 
-#yearSliderWrapper {
-  position: fixed;
-  top: 0; 
-  width: 100%; 
-  z-index: 1;
+#encountersText {
+  margin:0;
+}
+
+#flagImage {
+  height: 150px;  
+  width: auto; 
+  outline: 2px solid black;
 }
 
 #hoverWrapper {
@@ -49,6 +40,14 @@ code {
   align-items: center;
   justify-content: space-between;
   padding: 10px 10vw 10px 10vw;
+}
+
+.leaflet-container {
+  height: 100vh !important;
+}
+
+.leaflet-interactive {
+  outline: none;
 }
 
 #lineGraph {
@@ -64,10 +63,17 @@ code {
   padding: 0 10vw 0 0;
 }
 
-#encountersText {
-  margin:0;
-}
-
 #nationwideEncountersText {
   font-size: 12px;
+}
+
+#yearSlider {
+  color: black;
+}
+
+#yearSliderWrapper {
+  position: fixed;
+  top: 0; 
+  width: 100%; 
+  z-index: 1;
 }
