@@ -4,9 +4,9 @@ import Slider from '@mui/material/Slider';
 import MapComponent from './MapComponent';
 
 const RangeSlider = () => {
-    const [value, setValue] = useState([2023, 2024]); //DEFAULT
+    const [value, setValue] = useState([2013, 2023]); //DEFAULT
     const MIN = 2007;
-    const MAX = 2024;
+    const MAX = 2023;
 
     const handleChange = (_, newValue) => {
         setValue(newValue);

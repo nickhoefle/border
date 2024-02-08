@@ -4,16 +4,15 @@ import 'leaflet/dist/leaflet.css';
 import encountersByCountryData from '../data/FY07-23.json';
 import worldMapGeoJSONData from '../world.geo.json';
 import PerYearChart from './PerYearChart';
-import zIndex from '@mui/material/styles/zIndex';
 
-const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
+const MapComponent = ({ startYear = 2014, endYear = 2024 }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
     const handleFeatureHover = (feature) => {
         const countryName = feature.properties.name.toUpperCase();
         setHoveredCountry({
             name: countryName,
-            customValue: feature.properties.customValue,
+            encounters: feature.properties.encounters,
         });
     };
 
@@ -45,9 +44,9 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
             const countryName = feature.properties.name.toUpperCase();
             
             if (uniqueCountries.has(countryName)) {
-                feature.properties.customValue = encounterByCountry[countryName] || 0;
+                feature.properties.encounters = encounterByCountry[countryName] || 0;
             } else {
-                feature.properties.customValue = 0;
+                feature.properties.encounters = 0;
             }
         });
 
@@ -60,7 +59,7 @@ const MapComponent = ({ startYear = 2023, endYear = 2024 }) => {
                 <GeoJSON
                     data={featureData}
                     style={(feature) => ({
-                        fillColor: feature.properties.name.toUpperCase() === (hoveredCountry?.name || '').toUpperCase() ? 'black' : `rgba(0, 128, 0, ${feature.properties.customValue / 100})`,
+                        fillColor: feature.properties.name.toUpperCase() === (hoveredCountry?.name || '').toUpperCase() ? 'black' : `rgba(0, 128, 0, ${feature.properties.encounters / 100})`,
                         weight: 1,
                         opacity: 1,
                         color: 'black',

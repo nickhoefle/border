@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 
 const PerYearChart = ({ country, startYear, endYear }) => {
     const countryName = country.name;
-    const customValue = country.customValue;
+    const encounters = country.encounters;
     const selectedYearRange = [];
     
     for (let i=startYear; i<=endYear; i++) {
@@ -102,7 +102,7 @@ const PerYearChart = ({ country, startYear, endYear }) => {
                     id="flagImage"
                 />
                 <h1 id="countryName">{countryName}</h1>
-                <h2 id="encountersText">{customValue.toLocaleString()}</h2>
+                <h2 id="encountersText">{encounters.toLocaleString()}</h2>
                 <strong id="nationwideEncountersText">NATIONWIDE ENCOUNTERS</strong>
             </div>
             <ReactApexChart
