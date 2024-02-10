@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import JSONData from './components/JSONData'
+import Footer from './components/Footer'
 import MapComponent from './components/MapComponent';
 import RangeSlider from './components/RangeSlider';
 
@@ -17,8 +18,8 @@ function App() {
                 <RangeSlider />
               </div>
               <MapComponent />
-              <footer style={{ height: '20px' }}>
-                Nick Hoefle
+              <footer height='35px'>
+                <Footer />
               </footer>
             </div>
           }
