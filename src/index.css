@@ -60,6 +60,12 @@ code {
   width: 75vw;
 }
 
+#mapContainer {
+  height:'calc(89vh - 20px)';
+  width: '100vw'; 
+  z-index: 1;
+}
+
 #nameAndCitizenshipWrapper {
   width: 25vw;
   display: flex;
