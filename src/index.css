@@ -40,12 +40,25 @@ code {
   outline: 2px solid black;
 }
 
+#footerWrapper {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  font-size: 18px;
+}
+
 #hoverWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 10px 10vw 0 10vw;
+}
+
+.footerLink {
+  margin-left: 12px;
+  text-decoration: underline;
+  color: inherit;
 }
 
 .leaflet-container {
