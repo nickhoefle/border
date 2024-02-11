@@ -61,6 +61,17 @@ code {
   color: inherit;
 }
 
+#hoverStripWrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 4px;
+  border-top: 1px solid #ccc;
+  z-index: 2;
+}
+
 .leaflet-container {
   background-color: teal !important;
 }

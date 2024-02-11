@@ -1,7 +1,7 @@
 import encountersByCountryData from '../data/FY07-23.json';
 import ReactApexChart from 'react-apexcharts';
 
-const PerYearChart = ({ country, startYear, endYear }) => {
+const HoverStrip = ({ country, startYear, endYear }) => {
     const countryName = country.name;
     const encounters = country.encounters;
     const selectedYearRange = [];
@@ -117,4 +117,4 @@ const PerYearChart = ({ country, startYear, endYear }) => {
     );
 };
 
-export default PerYearChart;
+export default HoverStrip;

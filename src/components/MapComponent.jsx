@@ -1,18 +1,19 @@
 import React, { useMemo, useState } from 'react';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import encountersByCountryData from '../data/FY07-23.json';
-import worldMapGeoJSONData from '../world.geo.json';
-import PerYearChart from './PerYearChart';
+import HoverStrip from './HoverStrip';
+import allCountriesGeoJsonData from '../world.geo.json';
+import encountersSpreadsheet from '../data/FY07-23.json';
 
 const MapComponent = ({ startYear = 2014, endYear = 2024 }) => {
+    
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
-    const handleFeatureHover = (feature) => {
-        const countryName = feature.properties.name.toUpperCase();
+    const handleFeatureHover = (countryGeoJson) => {
+        const countryName = countryGeoJson.properties.name.toUpperCase();
         setHoveredCountry({
             name: countryName,
-            encounters: feature.properties.encounters,
+            encounters: countryGeoJson.properties.encounters,
         });
     };
 
@@ -20,14 +21,16 @@ const MapComponent = ({ startYear = 2014, endYear = 2024 }) => {
         setHoveredCountry(null);
     };
 
-    const featureData = useMemo(() => {
+    // { features: [geoJsonCountry1, geoJsonCountry2, geoJsonCountry3 ... ] }
+    const countriesGeoJsonWithEncounters = useMemo(() => {
         
         const uniqueCountries = new Set();
-        const encounterByCountry = {};
+        const countriesAndEncounters = {}; 
         
-        encountersByCountryData.forEach((row) => {
+        encountersSpreadsheet.forEach((row) => {
             
             const citizenship = row.Citizenship;
+            
             if (!uniqueCountries.has(citizenship)) {
                 uniqueCountries.add(citizenship);
             }
@@ -36,59 +39,47 @@ const MapComponent = ({ startYear = 2014, endYear = 2024 }) => {
                 parseInt(row["Fiscal Year"]) >= parseInt(startYear) &&
                 parseInt(row["Fiscal Year"]) <= parseInt(endYear)
             ) {
-                encounterByCountry[citizenship] = (encounterByCountry[citizenship] || 0) + row['Encounter Count'];
+                countriesAndEncounters[citizenship] = (countriesAndEncounters[citizenship] || 0) + row['Encounter Count'];
             }
         });
 
-        worldMapGeoJSONData.features.forEach((feature) => {
-            const countryName = feature.properties.name.toUpperCase();
+        allCountriesGeoJsonData.features.forEach((country) => {
+            const countryName = country.properties.name.toUpperCase();
             
             if (uniqueCountries.has(countryName)) {
-                feature.properties.encounters = encounterByCountry[countryName] || 0;
+                country.properties.encounters = countriesAndEncounters[countryName] || 0;
             } else {
-                feature.properties.encounters = 0;
+                country.properties.encounters = 0;
             }
         });
 
-        return worldMapGeoJSONData;
+        return allCountriesGeoJsonData;
     }, [startYear, endYear]);
 
     return (
         <>
             <MapContainer center={[25, 0]} zoom={2} style={{ height:'calc(89vh - 30px)', width: '100vw', zIndex: 1 }}>
                 <GeoJSON
-                    data={featureData}
-                    style={(feature) => ({
-                        fillColor: feature.properties.name.toUpperCase() === (hoveredCountry?.name || '').toUpperCase() ? 'black' : `rgba(0, 128, 0, ${feature.properties.encounters / 100})`,
+                    data={countriesGeoJsonWithEncounters}
+                    style={(countryOnMap) => ({
+                        fillColor: countryOnMap.properties.name.toUpperCase() === (hoveredCountry?.name || '').toUpperCase() ? 'black' : `rgba(0, 128, 0, ${countryOnMap.properties.encounters / 100})`,
                         weight: 1,
                         opacity: 1,
                         color: 'black',
                         dashArray: '0',
                         fillOpacity: 1,
                     })}
-                    onEachFeature={(feature, layer) => {
+                    onEachFeature={(countryOnMap, layer) => {
                         layer.on({
-                            mouseover: () => handleFeatureHover(feature),
+                            mouseover: () => handleFeatureHover(countryOnMap),
                             mouseout: handleFeatureLeave,
                         });
                     }}
                 />
             </MapContainer>
             {hoveredCountry && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        bottom: 0,
-                        left: 0,
-                        width: '100%',
-                        background: '#fff',
-                        padding: '4px',
-                        borderTop: '1px solid #ccc',
-                        zIndex: 2,
-                        
-                    }}
-                >
-                    <PerYearChart country={hoveredCountry} startYear={startYear} endYear={endYear} />
+                <div id='hoverStripWrapper'>
+                    <HoverStrip country={hoveredCountry} startYear={startYear} endYear={endYear} />
                 </div>
             )}
         </>
