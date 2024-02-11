@@ -5,7 +5,7 @@ const HoverStrip = ({ country, startYear, endYear }) => {
     const countryName = country.name;
     const encounters = country.encounters;
     const selectedYearRange = [];
-    
+
     for (let i=startYear; i<=endYear; i++) {
         selectedYearRange.push(i);
     }

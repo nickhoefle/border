@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import JSONData from './components/JSONData'
 import Footer from './components/Footer'
-import MapComponent from './components/MapComponent';
 import RangeSlider from './components/RangeSlider';
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
                 <p id="titleText">UNITED STATES BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
                 <RangeSlider />
               </div>
-              <MapComponent />
               <footer height='35px'>
                 <Footer />
               </footer>

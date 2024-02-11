@@ -56,6 +56,8 @@ const MapComponent = ({ startYear = 2014, endYear = 2024 }) => {
         return allCountriesGeoJsonData;
     }, [startYear, endYear]);
 
+    console.log(startYear, endYear)
+
     return (
         <>
             <MapContainer center={[25, 0]} zoom={2} style={{ height:'calc(89vh - 30px)', width: '100vw', zIndex: 1 }}>
