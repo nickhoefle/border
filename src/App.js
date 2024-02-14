@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import JSONData from './components/JSONData'
 import Footer from './components/Footer'
 import RangeSlider from './components/RangeSlider';
+import CSVData from './components/CSVData';
 
 function App() {
   return (
@@ -26,6 +27,12 @@ function App() {
           path="/jsondata"
           element={
             <JSONData />
+          }
+        ></Route>
+        <Route
+          path="/csvdata"
+          element={
+            <CSVData />
           }
         ></Route>
       </Routes>
