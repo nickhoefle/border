@@ -16,7 +16,7 @@ function App() {
                 <p id="titleText">UNITED STATES BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
                 <RangeSlider />
               </div>
-              <footer height='35px'>
+              <footer id="footerContainer" height='35px'>
                 <Footer />
               </footer>
             </div>

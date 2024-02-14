@@ -40,6 +40,18 @@ code {
   outline: 2px solid black;
 }
 
+#footerContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footerLink {
+  margin-left: 12px;
+  text-decoration: underline;
+  color: inherit;
+}
+
 #footerWrapper {
   display: flex; 
   justify-content: center; 
@@ -53,12 +65,6 @@ code {
   align-items: center;
   justify-content: space-between;
   padding: 10px 10vw 0 10vw;
-}
-
-.footerLink {
-  margin-left: 12px;
-  text-decoration: underline;
-  color: inherit;
 }
 
 #hoverStripWrapper {
