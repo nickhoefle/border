@@ -50,6 +50,7 @@ code {
   margin-left: 12px;
   text-decoration: underline;
   color: inherit;
+  font-weight: bold;
 }
 
 #footerWrapper {
