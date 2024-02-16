@@ -13,15 +13,21 @@ const Footer = () => {
             </a>
             <a 
                 className='footerLink'
-                href='/jsondata'
-            >
-                JSON
-            </a>
-            <a 
-                className='footerLink'
                 href='https://www.cbp.gov/document/stats/nationwide-encounters'
             >
                 CBP.GOV
+            </a>
+            <a 
+                className='footerLink'
+                href='/csvdata'
+            >
+                CSV
+            </a>
+            <a 
+                className='footerLink'
+                href='/jsondata'
+            >
+                JSON
             </a>
         </div>
     );
