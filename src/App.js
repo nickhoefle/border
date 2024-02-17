@@ -8,6 +8,13 @@ import CSVData from './components/CSVData';
 function App() {
   const [isMobile, setIsMobile] = useState(null);
   const [visible, setVisible] = useState(!isMobile);
+  const [zoomLevel, setZoomLevel] = useState(2);
+
+  const setZoom = (currentZoom) => {
+    setZoomLevel(currentZoom);
+  }
+
+  console.log(zoomLevel);
 
   const toggleRangeSliderVisibility = () => {
     setVisible((visible) => !visible);
@@ -19,8 +26,8 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
-      setVisible(!isMobile); // Toggle visibility based on the updated isMobile value
+      setIsMobile(window.innerWidth <= 768); 
+      setVisible(!isMobile);
     };
 
     handleResize();
@@ -44,7 +51,7 @@ function App() {
                 <button id="toggleYearButton" onClick={visible ? handleCloseSlider : toggleRangeSliderVisibility}>
                   {visible ? 'Close' : 'Toggle Year Range'}
                 </button>
-                <RangeSlider visible={visible} id="rangeSlider" handleCloseSlider={handleCloseSlider} isMobile={isMobile}/>
+                <RangeSlider visible={visible} id="rangeSlider" handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} />
               </div>
               <footer id="footerContainer" height='35px'>
                 <Footer />

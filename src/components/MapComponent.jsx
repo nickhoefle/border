@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { MapContainer, GeoJSON } from 'react-leaflet';
+import { MapContainer, GeoJSON, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import HoverStrip from './HoverStrip';
 import allCountriesGeoJsonData from '../world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 
-const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isMobile }) => {
+const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isMobile, setZoom, zoomLevel }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
     const handleFeatureHover = (countryGeoJson) => {
@@ -23,20 +23,17 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
         setHoveredCountry(null);
     };
 
-    // { features: [geoJsonCountry1, geoJsonCountry2, geoJsonCountry3 ... ] }
     const countriesGeoJsonWithEncounters = useMemo(() => {
-        
         const uniqueCountries = new Set();
-        const countriesAndEncounters = {}; 
-        
+        const countriesAndEncounters = {};
+
         encountersSpreadsheet.forEach((row) => {
-            
             const citizenship = row.Citizenship;
-            
+
             if (!uniqueCountries.has(citizenship)) {
                 uniqueCountries.add(citizenship);
             }
-            
+
             if (
                 parseInt(row["Fiscal Year"]) >= parseInt(startYear) &&
                 parseInt(row["Fiscal Year"]) <= parseInt(endYear)
@@ -47,7 +44,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
 
         allCountriesGeoJsonData.features.forEach((country) => {
             const countryName = country.properties.name.toUpperCase();
-            
+
             if (uniqueCountries.has(countryName)) {
                 country.properties.encounters = countriesAndEncounters[countryName] || 0;
             } else {
@@ -58,9 +55,22 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
         return allCountriesGeoJsonData;
     }, [startYear, endYear]);
 
+    // Custom hook to listen for the zoomend event
+    const ZoomListener = () => {
+        const map = useMapEvents({
+            zoomend: () => {
+                const currentZoom = map.getZoom();
+                setZoom(currentZoom);
+            },
+        });
+
+        return null;
+    };
+
     return (
         <>
-            <MapContainer center={[25, 0]} zoom={2} style={{ height:'calc(89vh - 30px)', width: '100vw', zIndex: 1 }}>
+            <MapContainer center={[25, 0]} zoom={zoomLevel} style={{ height: 'calc(89vh - 30px)', width: '100vw', zIndex: 1 }}>
+                <ZoomListener />
                 <GeoJSON
                     data={countriesGeoJsonWithEncounters}
                     style={(countryOnMap) => ({
