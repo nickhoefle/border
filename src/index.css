@@ -112,6 +112,10 @@ code {
   text-align: center;
 }
 
+#toggleYearButton {
+  display: none;
+}
+
 #yearSlider {
   color: black;
 }
@@ -120,4 +124,75 @@ code {
   width: 100%; 
   z-index: 1;
   overflow: hidden;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  #countryName {
+    font-size: 18px;
+    margin-top: 50px;
+    position: fixed;
+  }
+
+  #encountersText {
+    font-size: 16px;
+    margin-top: 75px;
+    position: fixed;
+  }
+
+  #flagImage {
+    height: 50px;
+    width: auto;
+    position: fixed;
+  }
+
+  #hoverWrapper {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #lineGraph {
+    width: 95%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  #nameAndCitizenshipWrapper {
+    padding: 0;
+    width: 100vw;
+  }
+
+  #nationwideEncountersText {
+    margin-top: 95px;
+    font-size: 0;
+  }
+
+  /* RangeSlider */
+  .css-1c2vomt {
+    width: 95vw !important;
+  }
+
+  /* RangeSlider Text */
+  .css-yafthl-MuiSlider-markLabel {
+    color: black;
+    font-size: 12px !important;
+  }
+
+  .css-1eoe787-MuiSlider-markLabel {
+    color: black;
+    font-size: 12px !important;
+    font-weight: bold;
+  }
+
+  #titleText {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  #toggleYearButton {
+    display: block;
+    text-align: center;
+    margin: 4px;
+  }
 }

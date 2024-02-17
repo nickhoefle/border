@@ -1,7 +1,9 @@
 import encountersByCountryData from '../data/FY07-23.json';
 import ReactApexChart from 'react-apexcharts';
+import React from 'react';
 
-const HoverStrip = ({ country, startYear, endYear }) => {
+const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
+
     const countryName = country.name;
     const encounters = country.encounters;
     const selectedYearRange = [];
@@ -39,23 +41,27 @@ const HoverStrip = ({ country, startYear, endYear }) => {
             categories: selectedYearRange,
             offsetY: 12,
             labels: {
+                show: true,
+                rotateAlways: isMobile ? true : false,
                 style: {
                     colors: 'black',
-                    fontSize: '14px',
+                    fontSize: isMobile ? '12px' : '14px',
                     fontWeight: 'bold',
                 },
             },
         },
         yaxis: {
             labels: {
+                show: true,
                 offsetX: -12,
                 style: {
                     colors: 'black', 
-                    fontSize: '14px',
+                    fontSize: isMobile ? '12px' : '14px',
                     fontWeight: 'bold', 
-                    textAlign: 'center' 
+                    textAlign: 'center', 
                 },
                 formatter: function (value) {
+                    console.log(value)
                     if (value === 0) {
                         return;
                     }
@@ -73,7 +79,7 @@ const HoverStrip = ({ country, startYear, endYear }) => {
         dataLabels: {
             enabled: true,
             offsetY: -5,
-            offsetX: 0,
+            offsetX: -4,
             style: {
                 fontWeight: 1,
             },
@@ -94,6 +100,8 @@ const HoverStrip = ({ country, startYear, endYear }) => {
         },
     ];
 
+    const chartWidth = `${selectedYearRange.length * 17}%`;
+
     return (
         <div id="hoverWrapper">
             <div id="nameAndCitizenshipWrapper">
@@ -111,10 +119,11 @@ const HoverStrip = ({ country, startYear, endYear }) => {
                 options={chartOptions}
                 series={chartSeries}
                 type="line"
-                height={220}
+                height={'100%'}
+                width={chartWidth}
             />
         </div>
     );
-};
+});
 
 export default HoverStrip;
