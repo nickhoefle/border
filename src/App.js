@@ -9,12 +9,15 @@ function App() {
   const [isMobile, setIsMobile] = useState(null);
   const [visible, setVisible] = useState(!isMobile);
   const [zoomLevel, setZoomLevel] = useState(2);
+  const [centerPoint, setCenterPoint] = useState('');
 
   const setZoom = (currentZoom) => {
     setZoomLevel(currentZoom);
   }
 
-  console.log(zoomLevel);
+  const setCenter = (currentCenter) => {
+    setCenterPoint(currentCenter);
+  }
 
   const toggleRangeSliderVisibility = () => {
     setVisible((visible) => !visible);
@@ -51,7 +54,7 @@ function App() {
                 <button id="toggleYearButton" onClick={visible ? handleCloseSlider : toggleRangeSliderVisibility}>
                   {visible ? 'Close' : 'Toggle Year Range'}
                 </button>
-                <RangeSlider visible={visible} id="rangeSlider" handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} />
+                <RangeSlider visible={visible} id="rangeSlider" handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} setCenter={setCenter} centerPoint={centerPoint} />
               </div>
               <footer id="footerContainer" height='35px'>
                 <Footer />
