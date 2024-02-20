@@ -15,22 +15,31 @@ const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel,
     return (
         <div id="yearSliderWrapper">
             { visible &&
-            <Box sx={{ width: '50vw', margin: '0 auto' }}>
-                <Slider
-                    id="yearSlider"
-                    getAriaLabel={() => 'Year range'}
-                    value={value}
-                    onChange={handleChange}
-                    marks={Array.from({ length: MAX - MIN + 1 }, (_, index) => ({
-                        value: MIN + index,
-                        label: `${(MIN + index) % 100 < 10 ? '0' : ''}${(MIN + index) % 100}`,
-                    }))}
-                    min={MIN}
-                    max={MAX}
-                />
-            </Box>
+                <Box sx={{ width: '50vw', margin: '0 auto' }}>
+                    <Slider
+                        id="yearSlider"
+                        getAriaLabel={() => 'Year range'}
+                        value={value}
+                        onChange={handleChange}
+                        marks={Array.from({ length: MAX - MIN + 1 }, (_, index) => ({
+                            value: MIN + index,
+                            label: `${(MIN + index) % 100 < 10 ? '0' : ''}${(MIN + index) % 100}`,
+                        }))}
+                        min={MIN}
+                        max={MAX}
+                    />
+                </Box>
             }
-            <MapComponent key={`${value[0]}-${value[1]}`} startYear={value[0]} endYear={value[1]} handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} setCenter={setCenter} centerPoint={centerPoint} />
+            <MapComponent 
+                key={`${value[0]}-${value[1]}`} 
+                startYear={value[0]} 
+                endYear={value[1]} 
+                handleCloseSlider={handleCloseSlider} 
+                isMobile={isMobile} setZoom={setZoom} 
+                zoomLevel={zoomLevel} 
+                setCenter={setCenter} 
+                centerPoint={centerPoint} 
+            />
         </div>
     );
 };

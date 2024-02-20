@@ -51,7 +51,10 @@ function App() {
             <div id="app">
               <div style={{ height: '9.5vh' }}>
                 <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
-                <button id="toggleYearButton" onClick={visible ? handleCloseSlider : toggleRangeSliderVisibility}>
+                <button 
+                  id={visible ? 'closeRangeSliderButton' : 'toggleRangeSliderButton'}
+                  onClick={visible ? handleCloseSlider : toggleRangeSliderVisibility}
+                >
                   {visible ? 'Close' : 'Toggle Year Range'}
                 </button>
                 <RangeSlider visible={visible} id="rangeSlider" handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} setCenter={setCenter} centerPoint={centerPoint} />
