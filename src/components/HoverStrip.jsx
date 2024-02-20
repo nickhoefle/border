@@ -61,7 +61,6 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                     textAlign: 'center', 
                 },
                 formatter: function (value) {
-                    console.log(value)
                     if (value === 0) {
                         return;
                     }

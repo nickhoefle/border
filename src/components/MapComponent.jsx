@@ -5,7 +5,7 @@ import HoverStrip from './HoverStrip';
 import allCountriesGeoJsonData from '../world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 
-const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isMobile, setZoom, zoomLevel, setCenter, centerPoint }) => {
+const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isMobile, setZoom, zoomLevel, centerPoint, setCenter }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
     const handleFeatureHover = (countryGeoJson) => {
@@ -61,13 +61,6 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
             zoomend: () => {
                 const currentZoom = map.getZoom();
                 setZoom(currentZoom);
-    
-                const bounds = map.getBounds();
-                const newCenter = [
-                    (bounds._northEast.lat + bounds._southWest.lat) / 2, // Calculate new latitude
-                    (bounds._northEast.lng + bounds._southWest.lng) / 2, // Calculate new longitude
-                ];
-                setCenter(newCenter);
             },
         });
     
@@ -79,7 +72,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
             moveend: () => {    
                 const bounds = map.getBounds();
                 const newCenter = [
-                    (bounds._northEast.lat + bounds._southWest.lat) / 2 - 0.1, // Calculate new latitude
+                    (bounds._northEast.lat + bounds._southWest.lat) / 2, // Calculate new latitude
                     (bounds._northEast.lng + bounds._southWest.lng) / 2, // Calculate new longitude
                 ];
                 setCenter(newCenter);
@@ -92,7 +85,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
 
     return (
         <>
-            <MapContainer center={centerPoint ? centerPoint : [25, 0]} zoom={zoomLevel} style={{ height: 'calc(89vh - 30px)', width: '100vw', zIndex: 1 }}>
+            <MapContainer center={centerPoint ? centerPoint : [25, 0]} zoom={ zoomLevel} style={{ height: 'calc(89vh - 30px)', width: '100vw', zIndex: 1 }}>
                 <ZoomListener />
                 <CenterListener />
                 <GeoJSON

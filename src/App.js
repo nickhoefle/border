@@ -9,7 +9,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(null);
   const [visible, setVisible] = useState(!isMobile);
   const [zoomLevel, setZoomLevel] = useState(2);
-  const [centerPoint, setCenterPoint] = useState('');
+  const [centerPoint, setCenterPoint] = useState([25, 2]);
 
   const setZoom = (currentZoom) => {
     setZoomLevel(currentZoom);

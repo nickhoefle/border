@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import MapComponent from './MapComponent';
-import { MapContainer } from 'react-leaflet';
 
 const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel, setCenter, centerPoint }) => {
     const [value, setValue] = useState([2013, 2023]); //DEFAULT
@@ -31,9 +30,7 @@ const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel,
                 />
             </Box>
             }
-            <MapContainer>
-                <MapComponent key={`${value[0]}-${value[1]}`} startYear={value[0]} endYear={value[1]} handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} setCenter={setCenter} centerPoint={centerPoint} />
-            </MapContainer>
+            <MapComponent key={`${value[0]}-${value[1]}`} startYear={value[0]} endYear={value[1]} handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} setCenter={setCenter} centerPoint={centerPoint} />
         </div>
     );
 };
