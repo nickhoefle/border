@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import MapComponent from './MapComponent';
+import OsmSwitch from './OsmSwitch';
 
-const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel, setCenter, centerPoint }) => {
+const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel, setCenter, centerPoint, toggleSwitch, switchOn }) => {
     const [value, setValue] = useState([2013, 2023]); //DEFAULT
     const MIN = 2007;
     const MAX = 2023;
@@ -16,6 +17,7 @@ const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel,
         <div id="yearSliderWrapper">
             { visible &&
                 <Box sx={{ width: '50vw', margin: '0 auto' }}>
+                    <strong>Year:</strong>
                     <Slider
                         id="yearSlider"
                         getAriaLabel={() => 'Year range'}
@@ -28,6 +30,7 @@ const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel,
                         min={MIN}
                         max={MAX}
                     />
+                    <OsmSwitch toggleSwitch={toggleSwitch} switchOn={switchOn} />
                 </Box>
             }
             <MapComponent 
@@ -39,6 +42,7 @@ const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel,
                 zoomLevel={zoomLevel} 
                 setCenter={setCenter} 
                 centerPoint={centerPoint} 
+                switchOn={switchOn}
             />
         </div>
     );

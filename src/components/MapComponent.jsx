@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { MapContainer, GeoJSON, useMapEvents } from 'react-leaflet';
+import { MapContainer, GeoJSON, useMapEvents, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import HoverStrip from './HoverStrip';
 import allCountriesGeoJsonData from '../world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 
-const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isMobile, setZoom, zoomLevel, centerPoint, setCenter }) => {
+const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isMobile, setZoom, zoomLevel, centerPoint, setCenter, switchOn }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
     const handleFeatureHover = (countryGeoJson) => {
@@ -88,6 +88,12 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
             <MapContainer center={centerPoint ? centerPoint : [25, 0]} zoom={ zoomLevel} style={{ height: 'calc(89vh - 30px)', width: '100vw', zIndex: 1 }}>
                 <ZoomListener />
                 <CenterListener />
+                {switchOn && (
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    />
+                )}
                 <GeoJSON
                     data={countriesGeoJsonWithEncounters}
                     style={(countryOnMap) => ({

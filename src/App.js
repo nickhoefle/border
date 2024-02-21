@@ -10,6 +10,7 @@ function App() {
   const [visible, setVisible] = useState(!isMobile);
   const [zoomLevel, setZoomLevel] = useState(2);
   const [centerPoint, setCenterPoint] = useState([25, 2]);
+  const [switchOn, setSwitchOn] = useState(false);
 
   const setZoom = (currentZoom) => {
     setZoomLevel(currentZoom);
@@ -26,6 +27,10 @@ function App() {
   const handleCloseSlider = () => {
     setVisible(false);
   };
+
+  const toggleSwitch = (switchOn) => {
+    setSwitchOn(switchOn);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,7 +62,18 @@ function App() {
                 >
                   {visible ? 'Close' : 'Toggle Year Range'}
                 </button>
-                <RangeSlider visible={visible} id="rangeSlider" handleCloseSlider={handleCloseSlider} isMobile={isMobile} setZoom={setZoom} zoomLevel={zoomLevel} setCenter={setCenter} centerPoint={centerPoint} />
+                <RangeSlider 
+                  id="rangeSlider"
+                  visible={visible} 
+                  handleCloseSlider={handleCloseSlider} 
+                  isMobile={isMobile} 
+                  setZoom={setZoom} 
+                  zoomLevel={zoomLevel} 
+                  setCenter={setCenter} 
+                  centerPoint={centerPoint}  
+                  toggleSwitch={toggleSwitch}
+                  switchOn={switchOn}
+                />
               </div>
               <footer id="footerContainer" height='35px'>
                 <Footer />
