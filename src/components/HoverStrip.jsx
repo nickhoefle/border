@@ -99,7 +99,14 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         },
     ];
 
-    const chartWidth = `${selectedYearRange.length * 17}%`;
+    let chartWidth = '';
+    const yearSpan = selectedYearRange.length;
+    console.log(yearSpan);
+    if (yearSpan < 6 || !isMobile) {
+        chartWidth = '100%';
+    } else {
+        chartWidth = `${yearSpan * 16}%`;
+    }
 
     return (
         <div id="hoverWrapper">
