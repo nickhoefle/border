@@ -5,7 +5,7 @@ import HoverStrip from './HoverStrip';
 import allCountriesGeoJsonData from '../world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 
-const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isMobile, setZoom, zoomLevel, centerPoint, setCenter, switchOn }) => {
+const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseOptionsPane, isMobile, setZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
     const handleFeatureHover = (countryGeoJson) => {
@@ -15,7 +15,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
             encounters: countryGeoJson.properties.encounters,
         });
         if (isMobile) {
-            handleCloseSlider();
+            handleCloseOptionsPane();
         }
     };
 
@@ -75,7 +75,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseSlider, isM
                     (bounds._northEast.lat + bounds._southWest.lat) / 2, // Calculate new latitude
                     (bounds._northEast.lng + bounds._southWest.lng) / 2, // Calculate new longitude
                 ];
-                setCenter(newCenter);
+                handleSetCenter(newCenter);
                 console.log(newCenter)
             },
         });

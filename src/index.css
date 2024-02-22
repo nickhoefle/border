@@ -60,6 +60,10 @@ code {
   font-size: 18px;
 }
 
+#headerWrapper {
+  height: 9.5vh;
+}
+
 #hoverWrapper {
   display: flex;
   flex-direction: row;
@@ -163,7 +167,7 @@ code {
     font-size: 0;
   }
 
-  /* RangeSlider */
+  /* Range Slider */
   .css-1c2vomt {
     width: 95vw !important;
   }
@@ -209,7 +213,7 @@ code {
     margin: 4px;
   }
 
-  #toggleRangeSliderButton {
+  #openOptionsPaneButton {
     padding: 2px 10px 2px 10px;
     margin: 3px 0 3px 0;
     color: black;
@@ -223,7 +227,7 @@ code {
     font-size: 14px;
   }
   
-  #closeRangeSliderButton {
+  #closeOptionsPaneButton {
     width: 143px;
     padding: 2px 10px 2px 10px;
     margin: 3px 0 3px 0;

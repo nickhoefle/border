@@ -4,7 +4,7 @@ import Slider from '@mui/material/Slider';
 import MapComponent from './MapComponent';
 import OsmSwitch from './OsmSwitch';
 
-const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel, setCenter, centerPoint, toggleSwitch, switchOn }) => {
+const OptionsPane = ({ visible, handleCloseOptionsPane, isMobile, setZoom, zoomLevel, handleSetCenter, centerPoint, toggleSwitch, switchOn }) => {
     const [value, setValue] = useState([2013, 2023]); //DEFAULT
     const MIN = 2007;
     const MAX = 2023;
@@ -37,10 +37,10 @@ const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel,
                 key={`${value[0]}-${value[1]}`} 
                 startYear={value[0]} 
                 endYear={value[1]} 
-                handleCloseSlider={handleCloseSlider} 
+                handleCloseOptionsPane={handleCloseOptionsPane} 
                 isMobile={isMobile} setZoom={setZoom} 
                 zoomLevel={zoomLevel} 
-                setCenter={setCenter} 
+                handleSetCenter={handleSetCenter} 
                 centerPoint={centerPoint} 
                 switchOn={switchOn}
             />
@@ -48,4 +48,4 @@ const RangeSlider = ({ visible, handleCloseSlider, isMobile, setZoom, zoomLevel,
     );
 };
 
-export default RangeSlider;
+export default OptionsPane;

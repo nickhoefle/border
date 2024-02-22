@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import JSONData from './components/JSONData';
 import Footer from './components/Footer';
-import RangeSlider from './components/RangeSlider';
+import OptionsPane from './components/OptionsPane';
 import CSVData from './components/CSVData';
 
 function App() {
@@ -12,21 +12,17 @@ function App() {
   const [centerPoint, setCenterPoint] = useState([25, 2]);
   const [switchOn, setSwitchOn] = useState(false);
 
+  const handleCloseOptionsPane = () => {
+    setVisible(false);
+  }
+
   const setZoom = (currentZoom) => {
     setZoomLevel(currentZoom);
   }
 
-  const setCenter = (currentCenter) => {
+  const handleSetCenter = (currentCenter) => {
     setCenterPoint(currentCenter);
   }
-
-  const toggleRangeSliderVisibility = () => {
-    setVisible((visible) => !visible);
-  };
-
-  const handleCloseSlider = () => {
-    setVisible(false);
-  };
 
   const toggleSwitch = (switchOn) => {
     setSwitchOn(switchOn);
@@ -47,29 +43,33 @@ function App() {
     };
   }, [isMobile]); // Add isMobile as a dependency to the useEffect dependency array
 
+  const handleToggleOptionsVisibility = () => {
+    setVisible((visible) => !visible);
+  }
+
   return (
     <Router>
       <Routes>
         <Route
           path="/"
           element={
-            <div id="app">
-              <div style={{ height: '9.5vh' }}>
+            <>
+              <div id="headerWrapper">
                 <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
                 <button 
-                  id={visible ? 'closeRangeSliderButton' : 'toggleRangeSliderButton'}
-                  onClick={visible ? handleCloseSlider : toggleRangeSliderVisibility}
+                  id={visible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
+                  onClick={handleToggleOptionsVisibility}
                 >
-                  {visible ? 'Close' : 'Toggle Year Range'}
+                  {visible ? 'Close' : 'Options'}
                 </button>
-                <RangeSlider 
-                  id="rangeSlider"
+                <OptionsPane 
+                  id="optionsPane"
                   visible={visible} 
-                  handleCloseSlider={handleCloseSlider} 
+                  handleCloseOptionsPane={handleCloseOptionsPane} 
                   isMobile={isMobile} 
                   setZoom={setZoom} 
                   zoomLevel={zoomLevel} 
-                  setCenter={setCenter} 
+                  handleSetCenter={handleSetCenter} 
                   centerPoint={centerPoint}  
                   toggleSwitch={toggleSwitch}
                   switchOn={switchOn}
@@ -78,7 +78,7 @@ function App() {
               <footer id="footerContainer" height='35px'>
                 <Footer />
               </footer>
-            </div>
+            </>
           }
         />
         <Route
