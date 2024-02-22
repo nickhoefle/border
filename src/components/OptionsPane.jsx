@@ -4,7 +4,7 @@ import Slider from '@mui/material/Slider';
 import MapComponent from './MapComponent';
 import OsmSwitch from './OsmSwitch';
 
-const OptionsPane = ({ optionsPaneVisible, handleCloseOptionsPane, isMobile, handleSetZoom, zoomLevel, handleSetCenter, centerPoint, toggleSwitch, switchOn }) => {
+const OptionsPane = ({ isMobile, optionsPaneVisible, handleCloseOptionsPane, zoomLevel, handleSetZoom, centerPoint, handleSetCenter, switchOn, toggleSwitch }) => {
     const [value, setValue] = useState([2013, 2023]); //DEFAULT
     const MIN = 2007;
     const MAX = 2023;
@@ -20,7 +20,6 @@ const OptionsPane = ({ optionsPaneVisible, handleCloseOptionsPane, isMobile, han
                     <strong>Year:</strong>
                     <Slider
                         id="yearSlider"
-                        getAriaLabel={() => 'Year range'}
                         value={value}
                         onChange={handleChange}
                         marks={Array.from({ length: MAX - MIN + 1 }, (_, index) => ({
@@ -37,12 +36,12 @@ const OptionsPane = ({ optionsPaneVisible, handleCloseOptionsPane, isMobile, han
                 key={`${value[0]}-${value[1]}`} 
                 startYear={value[0]} 
                 endYear={value[1]} 
-                handleCloseOptionsPane={handleCloseOptionsPane} 
                 isMobile={isMobile} 
-                handleSetZoom={handleSetZoom} 
+                handleCloseOptionsPane={handleCloseOptionsPane} 
                 zoomLevel={zoomLevel} 
-                handleSetCenter={handleSetCenter} 
+                handleSetZoom={handleSetZoom} 
                 centerPoint={centerPoint} 
+                handleSetCenter={handleSetCenter} 
                 switchOn={switchOn}
             />
         </div>

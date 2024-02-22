@@ -55,15 +55,13 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseOptionsPane
         return allCountriesGeoJsonData;
     }, [startYear, endYear]);
 
-    // Custom hook to listen for the zoomend event
     const ZoomListener = () => {
         const map = useMapEvents({
             zoomend: () => {
                 const currentZoom = map.getZoom();
                 handleSetZoom(currentZoom);
             },
-        });
-    
+        });   
         return null;
     };    
 
@@ -78,8 +76,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseOptionsPane
                 handleSetCenter(newCenter);
                 console.log(newCenter)
             },
-        });
-    
+        });   
         return null;
     };    
 
@@ -102,7 +99,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseOptionsPane
                         opacity: 1,
                         color: 'black',
                         dashArray: '0',
-                        fillOpacity: 1,
+                        fillOpacity: '9',
                     })}
                     onEachFeature={(countryOnMap, layer) => {
                         layer.on({
