@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import JSONData from './components/JSONData';
-import Footer from './components/Footer';
-import OptionsPane from './components/OptionsPane';
 import CSVData from './components/CSVData';
+import Footer from './components/Footer';
+import JSONData from './components/JSONData';
+import OptionsPane from './components/OptionsPane';
 
 function App() {
   const [isMobile, setIsMobile] = useState(null);
-  const [visible, setVisible] = useState(!isMobile);
+  const [optionsPaneVisible, setOptionsPaneVisible] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(2);
   const [centerPoint, setCenterPoint] = useState([25, 2]);
   const [switchOn, setSwitchOn] = useState(false);
 
   const handleCloseOptionsPane = () => {
-    setVisible(false);
+    setOptionsPaneVisible(false);
   }
 
-  const setZoom = (currentZoom) => {
+  const handleSetZoom = (currentZoom) => {
     setZoomLevel(currentZoom);
   }
 
@@ -31,7 +31,6 @@ function App() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768); 
-      setVisible(!isMobile);
     };
 
     handleResize();
@@ -41,10 +40,10 @@ function App() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [isMobile]); // Add isMobile as a dependency to the useEffect dependency array
+  }, []); // Add isMobile as a dependency to the useEffect dependency array
 
   const handleToggleOptionsVisibility = () => {
-    setVisible((visible) => !visible);
+    setOptionsPaneVisible((optionsPaneVisible) => !optionsPaneVisible);
   }
 
   return (
@@ -57,22 +56,22 @@ function App() {
               <div id="headerWrapper">
                 <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
                 <button 
-                  id={visible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
+                  id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
                   onClick={handleToggleOptionsVisibility}
                 >
-                  {visible ? 'Close' : 'Options'}
+                  {optionsPaneVisible ? 'Close' : 'Options'}
                 </button>
                 <OptionsPane 
                   id="optionsPane"
-                  visible={visible} 
-                  handleCloseOptionsPane={handleCloseOptionsPane} 
                   isMobile={isMobile} 
-                  setZoom={setZoom} 
+                  optionsPaneVisible={optionsPaneVisible} 
+                  handleCloseOptionsPane={handleCloseOptionsPane} 
                   zoomLevel={zoomLevel} 
-                  handleSetCenter={handleSetCenter} 
-                  centerPoint={centerPoint}  
-                  toggleSwitch={toggleSwitch}
+                  handleSetZoom={handleSetZoom} 
+                  centerPoint={centerPoint} 
+                  handleSetCenter={handleSetCenter}  
                   switchOn={switchOn}
+                  toggleSwitch={toggleSwitch}
                 />
               </div>
               <footer id="footerContainer" height='35px'>

@@ -5,7 +5,7 @@ import HoverStrip from './HoverStrip';
 import allCountriesGeoJsonData from '../world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 
-const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseOptionsPane, isMobile, setZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
+const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseOptionsPane, isMobile, handleSetZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
 
     const handleFeatureHover = (countryGeoJson) => {
@@ -60,7 +60,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, handleCloseOptionsPane
         const map = useMapEvents({
             zoomend: () => {
                 const currentZoom = map.getZoom();
-                setZoom(currentZoom);
+                handleSetZoom(currentZoom);
             },
         });
     
