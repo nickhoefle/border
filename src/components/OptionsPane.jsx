@@ -14,29 +14,32 @@ const OptionsPane = ({ isMobile, optionsPaneVisible, handleCloseOptionsPane, zoo
     };
 
     return (
-        <div id="yearSliderWrapper">
+        <>
             { optionsPaneVisible &&
-                <Box sx={{ width: '50vw', margin: '0 auto' }}>
-                    <strong>Year:</strong>
-                    <Slider
-                        id="yearSlider"
-                        value={value}
-                        onChange={handleChange}
-                        marks={Array.from({ length: MAX - MIN + 1 }, (_, index) => ({
-                            value: MIN + index,
-                            label: `${(MIN + index) % 100 < 10 ? '0' : ''}${(MIN + index) % 100}`,
-                        }))}
-                        min={MIN}
-                        max={MAX}
-                    />
-                    <OsmSwitch toggleSwitch={toggleSwitch} switchOn={switchOn} />
-                </Box>
+                <div id="optionsPaneWrapper">
+                    <Box sx={{ width: '50vw', margin: '0 auto' }}>
+                        <strong>Year:</strong>
+                        <Slider
+                            id="yearSlider"
+                            value={value}
+                            onChange={handleChange}
+                            marks={Array.from({ length: MAX - MIN + 1 }, (_, index) => ({
+                                value: MIN + index,
+                                label: `${(MIN + index) % 100 < 10 ? '0' : ''}${(MIN + index) % 100}`,
+                            }))}
+                            min={MIN}
+                            max={MAX}
+                        />
+                        <OsmSwitch toggleSwitch={toggleSwitch} switchOn={switchOn} />
+                    </Box>
+                </div>
             }
             <MapComponent 
                 key={`${value[0]}-${value[1]}`} 
                 startYear={value[0]} 
                 endYear={value[1]} 
                 isMobile={isMobile} 
+                optionsPaneVisible={optionsPaneVisible}
                 handleCloseOptionsPane={handleCloseOptionsPane} 
                 zoomLevel={zoomLevel} 
                 handleSetZoom={handleSetZoom} 
@@ -44,7 +47,7 @@ const OptionsPane = ({ isMobile, optionsPaneVisible, handleCloseOptionsPane, zoo
                 handleSetCenter={handleSetCenter} 
                 switchOn={switchOn}
             />
-        </div>
+        </>
     );
 };
 

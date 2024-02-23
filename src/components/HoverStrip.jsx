@@ -45,7 +45,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                 rotateAlways: isMobile ? true : false,
                 style: {
                     colors: 'black',
-                    fontSize: isMobile ? '12px' : '14px',
+                    fontSize: isMobile ? '12px' : '16px',
                     fontWeight: 'bold',
                 },
             },
@@ -53,10 +53,10 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         yaxis: {
             labels: {
                 show: true,
-                offsetX: -12,
+                offsetX: -10,
                 style: {
                     colors: 'black', 
-                    fontSize: isMobile ? '12px' : '14px',
+                    fontSize: isMobile ? '12px' : '17px',
                     fontWeight: 'bold', 
                     textAlign: 'center', 
                 },
@@ -78,8 +78,9 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         dataLabels: {
             enabled: true,
             offsetY: -5,
-            offsetX: -4,
+            offsetX: isMobile ? -4 : 3,
             style: {
+                fontSize: isMobile ? '10px' : '16px',
                 fontWeight: 1,
             },
             background: { enabled: false },

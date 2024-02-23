@@ -52,15 +52,16 @@ function App() {
         <Route
           path="/"
           element={
-            <>
-              <div id="headerWrapper">
-                <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
-                <button 
-                  id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
-                  onClick={handleToggleOptionsVisibility}
-                >
-                  {optionsPaneVisible ? 'Close' : 'Options'}
-                </button>
+            <div id="homepage">
+                <div id="headerWrapper">
+                  <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
+                  <button 
+                    id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
+                    onClick={handleToggleOptionsVisibility}
+                  >
+                    {optionsPaneVisible ? 'Close' : 'Options'}
+                  </button>
+                </div>
                 <OptionsPane 
                   id="optionsPane"
                   isMobile={isMobile} 
@@ -73,11 +74,10 @@ function App() {
                   switchOn={switchOn}
                   toggleSwitch={toggleSwitch}
                 />
-              </div>
-              <footer id="footerContainer" height='35px'>
+              <footer id="footerContainer">
                 <Footer />
               </footer>
-            </>
+            </div>
           }
         />
         <Route
