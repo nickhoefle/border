@@ -115,14 +115,12 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
                 </MapContainer>
             </div>
             {hoveredCountry && (
-                <div id='hoverStripWrapper'>
-                    <HoverStrip 
-                        country={hoveredCountry} 
-                        startYear={startYear} 
-                        endYear={endYear} 
-                        isMobile={isMobile} 
-                    />
-                </div>
+                <HoverStrip 
+                    country={hoveredCountry} 
+                    startYear={startYear} 
+                    endYear={endYear} 
+                    isMobile={isMobile} 
+                />
             )}
         </>
     );

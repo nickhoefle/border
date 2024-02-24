@@ -40,6 +40,13 @@ button {
   outline: 2px solid black;
 }
 
+.footerLink {
+  margin-left: 12px;
+  text-decoration: underline;
+  color: inherit;
+  font-weight: bold;
+}
+
 #footerWrapper {
   position: absolute;
   bottom: 0;
@@ -49,45 +56,21 @@ button {
   background-color: white;
 }
 
-.footerLink {
-  margin-left: 12px;
-  text-decoration: underline;
-  color: inherit;
-  font-weight: bold;
-}
-
-/* #footerWrapper {
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  font-size: 18px;
-} */
-
 #headerWrapper {
   z-index: 4;
   position: absolute;
   background-color: white;
 }
 
-#homepage {
-  overflow: hidden;
-}
-
 #hoverWrapper {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 10vw 0 10vw;
-}
-
-#hoverStripWrapper {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background: #fff;
-  padding: 4px;
   border-top: 1px solid #ccc;
   z-index: 2;
 }
