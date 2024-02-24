@@ -52,30 +52,30 @@ function App() {
         <Route
           path="/"
           element={
-            <>
-              <div id="headerWrapper">
-                <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
-                <button 
-                  id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
-                  onClick={handleToggleOptionsVisibility}
-                >
-                  {optionsPaneVisible ? 'Close' : 'Options'}
-                </button>
-              </div>
-              <OptionsPane 
-                id="optionsPane"
-                isMobile={isMobile} 
-                optionsPaneVisible={optionsPaneVisible} 
-                handleCloseOptionsPane={handleCloseOptionsPane} 
-                zoomLevel={zoomLevel} 
-                handleSetZoom={handleSetZoom} 
-                centerPoint={centerPoint} 
-                handleSetCenter={handleSetCenter}  
-                switchOn={switchOn}
-                toggleSwitch={toggleSwitch}
-              />
-              <Footer />
-            </>
+            <div id="homepage">
+                <div id="headerWrapper">
+                  <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
+                  <button 
+                    id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
+                    onClick={handleToggleOptionsVisibility}
+                  >
+                    {optionsPaneVisible ? 'Close' : 'Options'}
+                  </button>
+                </div>
+                <OptionsPane 
+                  id="optionsPane"
+                  isMobile={isMobile} 
+                  optionsPaneVisible={optionsPaneVisible} 
+                  handleCloseOptionsPane={handleCloseOptionsPane} 
+                  zoomLevel={zoomLevel} 
+                  handleSetZoom={handleSetZoom} 
+                  centerPoint={centerPoint} 
+                  handleSetCenter={handleSetCenter}  
+                  switchOn={switchOn}
+                  toggleSwitch={toggleSwitch}
+                />
+                <Footer />
+            </div>
           }
         />
         <Route
