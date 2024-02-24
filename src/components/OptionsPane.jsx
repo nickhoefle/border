@@ -18,7 +18,7 @@ const OptionsPane = ({ isMobile, optionsPaneVisible, handleCloseOptionsPane, zoo
             { optionsPaneVisible &&
                 <div id="optionsPaneWrapper">
                     <Box sx={{ width: '50vw', margin: '0 auto' }}>
-                        <strong>Year:</strong>
+                        <label id="yearLabel">Year</label>
                         <Slider
                             id="yearSlider"
                             value={value}

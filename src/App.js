@@ -55,12 +55,14 @@ function App() {
             <div id="homepage">
                 <div id="headerWrapper">
                   <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
-                  <button 
-                    id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
-                    onClick={handleToggleOptionsVisibility}
-                  >
-                    {optionsPaneVisible ? 'Close' : 'Options'}
-                  </button>
+                  <div id="buttonWrapper">
+                    <button 
+                      id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
+                      onClick={handleToggleOptionsVisibility}
+                    >
+                      {optionsPaneVisible ? 'Close' : 'Options'}
+                    </button>
+                  </div>
                 </div>
                 <OptionsPane 
                   id="optionsPane"
