@@ -37,6 +37,9 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                 show: false,
             },
         },
+        tooltip: {
+            enabled: false,
+        },
         xaxis: {
             categories: selectedYearRange,
             offsetY: 12,
