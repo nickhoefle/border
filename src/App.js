@@ -74,9 +74,7 @@ function App() {
                   switchOn={switchOn}
                   toggleSwitch={toggleSwitch}
                 />
-              <footer id="footerContainer">
                 <Footer />
-              </footer>
             </div>
           }
         />
