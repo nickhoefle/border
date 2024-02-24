@@ -43,6 +43,7 @@ button {
   height: 130px;  
   width: auto; 
   outline: 2px solid black;
+  margin-top: 8px;
 }
 
 .footerLink {
@@ -96,16 +97,16 @@ button {
 }
 
 #lineGraph {
-  width: 75vw;
+  width: 80vw;
 }
 
 #nameAndCitizenshipWrapper {
-  width: 25vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 10vw 0 0;
+  padding-right: 20px;
 }
 
 #nationwideEncountersText {
