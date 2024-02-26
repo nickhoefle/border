@@ -48,7 +48,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                 rotateAlways: isMobile ? true : false,
                 style: {
                     colors: 'black',
-                    fontSize: isMobile ? '12px' : '16px',
+                    fontSize: isMobile ? '14px' : '16px',
                     fontWeight: 'bold',
                 },
             },
@@ -59,9 +59,10 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                 offsetX: -10,
                 style: {
                     colors: 'black', 
-                    fontSize: isMobile ? '12px' : '17px',
+                    fontSize: isMobile ? '14px' : '17px',
                     fontWeight: 'bold', 
                     textAlign: 'center', 
+                    zIndex: 0,
                 },
                 formatter: function (value) {
                     if (value === 0) {
@@ -81,10 +82,13 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         dataLabels: {
             enabled: true,
             offsetY: -5,
-            offsetX: isMobile ? -4 : 2,
+            offsetX: isMobile ? 0 : 0,
             style: {
-                fontSize: isMobile ? '10px' : '16px',
+                fontSize: isMobile ? '14px' : '16px',
                 fontWeight: 1,
+                color: 'black',
+                paddingRight: '30px',
+                zIndex: 2,
             },
             background: { enabled: false },
             formatter: function (val, opts) {
@@ -95,6 +99,12 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
             curve: 'smooth',
             width: 2,
         },
+        grid: {
+            padding: {
+                right: 28,
+                left: 20
+            }
+        }
     };
     const chartSeries = [
         {
