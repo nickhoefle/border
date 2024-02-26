@@ -13,6 +13,7 @@ button {
   sans-serif;
   border-radius: 5px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 #buttonWrapper {
@@ -22,7 +23,7 @@ button {
 
 #closeOptionsPaneButton {
   width: 150px;
-  padding: 2px 10px 6px 10px;
+  padding: 10px;
   margin: 3px 0 3px 0;
   color: black;
   background-color: #ff9797;
@@ -115,7 +116,7 @@ button {
 
 #openOptionsPaneButton {
   width: 150px;
-  padding: 2px 10px 2px 10px;
+  padding: 10px;
   margin: 3px 0 3px 0;
   color: black;
   background-color: white;
@@ -127,7 +128,7 @@ button {
   width: 100%; 
   z-index: 3;
   position: absolute;
-  top: 85px;
+  top: 90px;
   background-color: white; 
   overflow: hidden;
 }
@@ -166,6 +167,10 @@ button {
 }
 
 @media only screen and (max-width: 768px) {
+
+  #closeOptionsPaneButton {
+    padding: 2px 10px 2px 10px;
+  }
 
   #countryName {
     font-size: 18px;
@@ -207,6 +212,14 @@ button {
     font-size: 0;
   }
 
+  #openOptionsPaneButton {
+    padding: 2px 10px 2px 10px;
+  }
+
+  #optionsPaneWrapper {
+    top: 85px;
+  }
+
   /* Range Slider */
   .css-1c2vomt {
     width: 95vw !important;
@@ -229,17 +242,18 @@ button {
     padding: 0;
   }
 
+  #switchAndTextWrapper {
+    margin: 35px 0 15px 0;
+  }
+
   #switchText {
-    margin-right: 24px;
-    font-weight: bold;
-    font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    margin: 10px 24px 0 0;
+    font-size: 18px;
   }
 
   #switchWrapper {
     display: flex;
+    margin-top: 0;
   }
 
   #titleText {
@@ -251,6 +265,14 @@ button {
     display: block;
     text-align: center;
     margin: 4px;
+  }
+
+  #yearLabel {
+    font-size: 18px;
+  }
+
+  #yearSlider {
+    margin: 4px 0 0 0;
   }
 
 }

@@ -81,7 +81,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
 
     return (
         <>
-            <div style={{ height: '100vh', zIndex: 1, position: 'relative' }}>
+            <div style={{ height: '100vh', zIndex: 1, position: 'relative', opacity: optionsPaneVisible ? '40%' : '100%' }}>
                 <MapContainer 
                     center={centerPoint ? centerPoint : [25, 0]} 
                     zoom={ zoomLevel} 
