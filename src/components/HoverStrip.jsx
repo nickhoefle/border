@@ -115,7 +115,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
 
     let chartWidth = '';
     const yearSpan = selectedYearRange.length;
-    console.log(yearSpan);
+
     if (yearSpan < 6 || !isMobile) {
         chartWidth = '95%';
     } else {

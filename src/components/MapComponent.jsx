@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import HoverStrip from './HoverStrip';
 import allCountriesGeoJsonData from '../world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
+import MapLegend from './MapLegend';
 
 const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, handleCloseOptionsPane, isMobile, handleSetZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
@@ -63,6 +64,32 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
             },
         });   
         return null;
+    };  
+    
+    const calculateFillColor = (country, hoveredCountry) => {
+        const countryName = country.properties.name.toUpperCase();
+        const isHovered = countryName === (hoveredCountry?.name || '').toUpperCase();
+        const encounters = country.properties.encounters;
+    
+        if (isHovered) {
+            return 'black';
+        } else if (encounters >= 1000000) {
+            return 'purple';
+        } else if (encounters >= 100000) {
+            return 'blue';
+        } else if (encounters >= 10000) {
+            return 'orange';
+        } else if (encounters >= 1000) {
+            return 'yellow';
+        } else if (encounters >= 100) {
+            return 'green';
+        } else if (encounters >= 10) {
+            return 'goldenrod';
+        } else if (encounters >= 1) {
+            return 'lightslategray';
+        } else {
+            return 'lightgray';
+        }
     };    
 
     const CenterListener = () => {
@@ -81,7 +108,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
 
     return (
         <>
-            <div style={{ height: '100vh', zIndex: 1, position: 'relative', opacity: optionsPaneVisible ? '40%' : '100%' }}>
+            <div style={{ height: '100vh', zIndex: 2, position: 'relative', opacity: optionsPaneVisible ? '40%' : '100%' }}>
                 <MapContainer 
                     center={centerPoint ? centerPoint : [25, 0]} 
                     zoom={ zoomLevel} 
@@ -98,12 +125,10 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
                     <GeoJSON
                         data={countriesGeoJsonWithEncounters}
                         style={(countryOnMap) => ({
-                            fillColor: countryOnMap.properties.name.toUpperCase() === (hoveredCountry?.name || '').toUpperCase() ? 'black' : `rgba(0, 128, 0, ${countryOnMap.properties.encounters / 100})`,
+                            fillColor: calculateFillColor(countryOnMap, hoveredCountry),
                             weight: 1,
-                            opacity: 1,
                             color: 'black',
                             dashArray: '0',
-                            fillOpacity: '9',
                         })}
                         onEachFeature={(countryOnMap, layer) => {
                             layer.on({
@@ -113,6 +138,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
                         }}
                     />
                 </MapContainer>
+                <MapLegend />
             </div>
             {hoveredCountry && (
                 <HoverStrip 

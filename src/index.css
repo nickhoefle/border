@@ -95,6 +95,8 @@ button {
 
 .leaflet-container {
   background-color: teal !important;
+  opacity: 100%;
+  z-index: 0;
 }
 
 #lineGraph {
