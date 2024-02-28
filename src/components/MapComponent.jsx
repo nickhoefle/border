@@ -74,21 +74,21 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
         if (isHovered) {
             return 'black';
         } else if (encounters >= 1000000) {
-            return 'purple';
+            return '#505C45';
         } else if (encounters >= 100000) {
-            return 'blue';
+            return '#667558';
         } else if (encounters >= 10000) {
-            return 'orange';
+            return '#7B8D6A';
         } else if (encounters >= 1000) {
-            return 'yellow';
-        } else if (encounters >= 100) {
-            return 'green';
-        } else if (encounters >= 10) {
-            return 'goldenrod';
+            return '#93A87E';
+        } else if (encounters >= 101) {
+            return '#A9C191';
+        } else if (encounters >= 11) {
+            return '#BFDAA4';
         } else if (encounters >= 1) {
-            return 'lightslategray';
+            return '#D4F3B7';
         } else {
-            return 'lightgray';
+            return 'white';
         }
     };    
 
