@@ -53,7 +53,10 @@ function App() {
           path="/"
           element={
             <div id="homepage">
-                <div id="headerWrapper">
+                <div 
+                  id="headerWrapper" 
+                  style={{ borderBottom: optionsPaneVisible ? 'none' : '3px solid black' }}
+                >
                   <p id="titleText">U.S. BORDER PATROL NATIONWIDE APPREHENSIONS BY CITIZENSHIP</p>
                   <div id="buttonWrapper">
                     <button 
