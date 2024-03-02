@@ -1,38 +1,78 @@
-import React from 'react';
+import { useState } from "react";
 
 const MapLegend = () => {
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleLegend = () => {
+    setCollapsed(!collapsed);
+  };
+
     return (
-      <div style={{ position: 'absolute', top: '100px', left: '10px', background: 'white', padding: '5px', border: '1px solid #ccc', zIndex: 3 }}>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'rgb(80, 92, 69)', marginRight: '5px', border: '0.5px solid black' }}></span>
+      <div 
+        id='legendWrapper'
+        className={collapsed ? 'collapsed' : ''}
+      >
+        <div 
+          id='legendHeaderWrapper'
+          onClick={toggleLegend}
+        >
+          <span id='legendToggleIcon'>{collapsed ? '☰' : '✕'}</span>
+          <p id='legendText'>Legend</p>
+        </div>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'rgb(80, 92, 69)' }}
+            className='colorSplotch'
+          ></span>
           <p>1,000,000+</p>
         </div>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'rgb(102, 117, 88)', marginRight: '5px', border: '0.5px solid black' }}></span>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'rgb(102, 117, 88)' }}
+            className='colorSplotch'
+          ></span>
           <p>100,001 - 1,000,000</p>
         </div>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'rgb(123, 141, 106)', border: '0.5px solid black', marginRight: '5px' }}></span>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'rgb(123, 141, 106)' }}
+            className='colorSplotch'
+          ></span>
           <p>10,001 - 100,000</p>
         </div>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'rgb(147, 168, 126)', border: '0.5px solid black', marginRight: '5px' }}></span>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'rgb(147, 168, 126)' }}
+            className='colorSplotch'
+          ></span>
           <p>1,001 - 10,000</p>
         </div>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'rgb(169, 193, 145)', border: '0.5px solid black', marginRight: '5px' }}></span>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'rgb(169, 193, 145)' }}
+            className='colorSplotch'
+          ></span>
           <p>101 - 1,000</p>
         </div>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'rgb(191, 218, 164)', border: '0.5px solid black', marginRight: '5px' }}></span>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'rgb(191, 218, 164)' }}
+            className='colorSplotch'
+          ></span>
           <p>11 - 100</p>
         </div>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'rgb(212, 243, 183)', marginRight: '5px', border: '0.5px solid black' }}></span>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'rgb(212, 243, 183)' }}
+            className='colorSplotch'
+          ></span>
           <p>1 - 10</p>
         </div>
-        <div>
-          <span style={{ display: 'inline-block', width: '20px', height: '20px', backgroundColor: 'white', marginRight: '5px', border: '0.5px solid black' }}></span>
+        <div className='splotchAndTextWrapper'>
+          <span 
+            style={{ backgroundColor: 'white' }}
+            className='colorSplotch'
+          ></span>
           <p>0</p>
         </div>
       </div>
