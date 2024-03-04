@@ -46,6 +46,7 @@ button {
 
 /* Selected Years */
 .css-1eoe787-MuiSlider-markLabel, 
+/* Omitted Years */
 .css-yafthl-MuiSlider-markLabel {
   color: black;
   font-size: 16px !important;
@@ -110,7 +111,7 @@ button {
   width: 100%;
   background: #fff;
   padding: 4px;
-  border-top: 1px solid #ccc;
+  border-top: 3px solid black;
   z-index: 2;
 }
 
