@@ -8,7 +8,7 @@ import MapLegend from './MapLegend';
 
 const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, handleCloseOptionsPane, isMobile, handleSetZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
-
+    
     const handleFeatureHover = (countryGeoJson) => {
         const countryName = countryGeoJson.properties.name.toUpperCase();
         setHoveredCountry({
@@ -112,7 +112,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
                 <MapContainer 
                     center={centerPoint ? centerPoint : [25, 0]} 
                     zoom={ zoomLevel} 
-                    style={{ height: '100vh', width: '100vw', zIndex: 1, position: 'absolute' }}
+                    style={{ height: '100vh', width: '100vw', zIndex: 1, position: 'absolute', fillOpacity: 0.4, }}
                 >
                     <ZoomListener />
                     <CenterListener />
@@ -139,8 +139,8 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
                     />
                 </MapContainer>
                 <MapLegend 
-                    setHoveredCountry={setHoveredCountry} 
                     countriesGeoJsonWithEncounters={countriesGeoJsonWithEncounters} 
+                    switchOn={switchOn}
                 />
             </div>
             {hoveredCountry && (

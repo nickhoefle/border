@@ -44,6 +44,10 @@ function App() {
 
   const handleToggleOptionsVisibility = () => {
     setOptionsPaneVisible((optionsPaneVisible) => !optionsPaneVisible);
+    const countriesOnMap = document.querySelectorAll('.leaflet-interactive');           
+        countriesOnMap.forEach(country => {
+            country.style.fillOpacity = switchOn ? 0.4 : 1;
+        });
   }
 
   return (
