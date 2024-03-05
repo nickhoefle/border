@@ -29,6 +29,7 @@ button {
   background-color: #ff9797;
   border: 1px solid black;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .colorSplotch {
@@ -84,6 +85,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 3px solid black;
 }
 
 #headerWrapper {
@@ -182,6 +184,7 @@ button {
   background-color: white;
   border: 2px solid black;
   font-weight: bold;
+  font-size: 16px;
 }
 
 #optionsPaneWrapper {
