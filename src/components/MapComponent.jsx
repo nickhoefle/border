@@ -138,7 +138,10 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
                         }}
                     />
                 </MapContainer>
-                <MapLegend />
+                <MapLegend 
+                    setHoveredCountry={setHoveredCountry} 
+                    countriesGeoJsonWithEncounters={countriesGeoJsonWithEncounters} 
+                />
             </div>
             {hoveredCountry && (
                 <HoverStrip 
