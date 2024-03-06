@@ -44,8 +44,13 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
         });
 
         allCountriesGeoJsonData.features.forEach((country) => {
-            const countryName = country.properties.name.toUpperCase();
-
+            let countryName = country.properties.name.toUpperCase();
+            if (countryName === 'BOSNIA AND HERZ.') {
+                countryName = 'BOSNIA-HERZEGOVINA';
+                console.log(countryName);
+            }
+            
+            console.log(uniqueCountries);
             if (uniqueCountries.has(countryName)) {
                 country.properties.encounters = countriesAndEncounters[countryName] || 0;
             } else {
