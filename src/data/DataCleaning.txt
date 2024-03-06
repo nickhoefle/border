@@ -1,0 +1,7 @@
+Locate all countries in the uniqueCountries Set. Find them on the map. If they
+have 0, but are in uniqueCountries, there is a problem. Do find / replace in csv/json to correct this.
+
+Examples: 
+
+//Need to change Czechoslovakia to Czech Rep
+//Need to handle Dem. 

@@ -29,7 +29,7 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
         const countriesAndEncounters = {};
 
         encountersSpreadsheet.forEach((row) => {
-            const citizenship = row.Citizenship;
+            let citizenship = row.Citizenship;
 
             if (!uniqueCountries.has(citizenship)) {
                 uniqueCountries.add(citizenship);
@@ -45,21 +45,19 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
 
         allCountriesGeoJsonData.features.forEach((country) => {
             let countryName = country.properties.name.toUpperCase();
-            if (countryName === 'BOSNIA AND HERZ.') {
-                countryName = 'BOSNIA-HERZEGOVINA';
-                console.log(countryName);
-            }
-            
-            console.log(uniqueCountries);
+
             if (uniqueCountries.has(countryName)) {
                 country.properties.encounters = countriesAndEncounters[countryName] || 0;
             } else {
                 country.properties.encounters = 0;
             }
+
         });
 
+        console.log(uniqueCountries)
         return allCountriesGeoJsonData;
     }, [startYear, endYear]);
+    
 
     const ZoomListener = () => {
         const map = useMapEvents({
