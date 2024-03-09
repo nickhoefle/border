@@ -51,7 +51,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename='border'>
       <Routes>
         <Route
           path="/"

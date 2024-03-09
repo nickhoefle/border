@@ -126,7 +126,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         <div id="hoverWrapper">
             <div id="nameAndCitizenshipWrapper">
                 <img
-                    src={`/flags/${countryName.replace(/\s/g, "")}.png`}
+                    src={`/border/flags/${countryName.replace(/\s/g, "")}.png`}
                     alt={`Flag of ${countryName}`}
                     id="flagImage"
                 />

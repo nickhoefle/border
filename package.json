@@ -1,6 +1,7 @@
 {
   "name": "react-leaflet-dummy-map",
   "version": "0.1.0",
+  "homepage": "/border/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.3",
