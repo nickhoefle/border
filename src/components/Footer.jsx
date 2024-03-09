@@ -1,4 +1,5 @@
 import React  from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 
@@ -17,18 +18,18 @@ const Footer = () => {
             >
                 CBP.GOV
             </a>
-            <a 
+            <Link 
                 className='footerLink'
-                href='/csvdata'
+                to='/csvdata'
             >
                 CSV
-            </a>
-            <a 
+            </Link>
+            <Link 
                 className='footerLink'
-                href='/jsondata'
+                to='/jsondata'
             >
                 JSON
-            </a>
+            </Link>
         </div>
     );
 };

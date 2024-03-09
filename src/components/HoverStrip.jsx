@@ -81,8 +81,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         },
         dataLabels: {
             enabled: true,
-            offsetY: -5,
-            offsetX: isMobile ? 0 : 0,
+            offsetY: -6,
             style: {
                 fontSize: isMobile ? '14px' : '16px',
                 fontWeight: 1,
@@ -101,7 +100,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         },
         grid: {
             padding: {
-                right: 28,
+                right: 35,
                 left: 20
             }
         }
