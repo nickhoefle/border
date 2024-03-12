@@ -65,6 +65,7 @@ function App() {
                   <div id="buttonWrapper">
                     <button 
                       id={optionsPaneVisible ? 'closeOptionsPaneButton' : 'openOptionsPaneButton'}
+                      className='themeFont'
                       onClick={handleToggleOptionsVisibility}
                     >
                       {optionsPaneVisible ? 'Close' : 'Options'}

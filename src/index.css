@@ -109,7 +109,6 @@ button {
   justify-content: space-between;
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
   background: #fff;
   padding: 4px;
@@ -155,7 +154,6 @@ button {
   z-index: 3;
   border-radius: 5px;
 }
-
 .collapsed {
   height: 34px; 
   overflow: hidden;
@@ -204,12 +202,9 @@ button {
   align-items: center;
 }
 
-#titleText {
-  text-align: center;
-  margin: 4px;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
+#switchAndTextWrapper {
+  margin: 40px 0 0 0;
+  display: flex;
 }
 
 #switchText {
@@ -218,13 +213,16 @@ button {
   margin-right: 30px;
 }
 
-#switchAndTextWrapper {
-  margin: 40px 0 0 0;
-  display: flex;
-}
-
 #switchWrapper {
   margin-top: 24px;
+}
+
+#titleText {
+  text-align: center;
+  margin: 4px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
 }
 
 #yearLabel {
@@ -241,11 +239,6 @@ button {
 
   #closeOptionsPaneButton {
     padding: 2px 10px 2px 10px;
-  }
-
-  .collapsed {
-    height: 30px; 
-    overflow: hidden;
   }
 
   .colorSplotch {
@@ -290,10 +283,6 @@ button {
     margin: 6px;
   }
 
-  #legendToggleIcon {
-    font-size: 17px;
-  }
-
   #legendText {
     font-size: 18px;
     font-weight: bold;
@@ -301,17 +290,21 @@ button {
   }
 
   #legendToggleIcon {
-    font-size: 22px;
+    font-size: 17px;
   }
 
   #legendWrapper {
     position: absolute;
-    top: 100px;
-    left: 2px;
+    top: 95px;
+    left: 3px;
     background-color: white;
     padding: 5px;
     border: 2px solid black;
     z-index: 3;
+  }
+  .collapsed {
+    height: 28px; 
+    overflow: hidden;
   }
 
   #lineGraph {
@@ -343,7 +336,7 @@ button {
     width: 95vw !important;
   }
 
-  /* RangeSlider Text */
+  /* Range Slider Text */
   .css-yafthl-MuiSlider-markLabel {
     color: black;
     font-size: 12px !important;

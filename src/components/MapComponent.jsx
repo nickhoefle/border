@@ -6,7 +6,7 @@ import allCountriesGeoJsonData from '../world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 import MapLegend from './MapLegend';
 
-const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, handleCloseOptionsPane, isMobile, handleSetZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
+const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptionsPane, isMobile, handleSetZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
     
     const handleFeatureHover = (countryGeoJson) => {
@@ -51,10 +51,8 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
             } else {
                 country.properties.encounters = 0;
             }
-
         });
 
-        console.log(uniqueCountries)
         return allCountriesGeoJsonData;
     }, [startYear, endYear]);
     
@@ -68,32 +66,6 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
         });   
         return null;
     };  
-    
-    const calculateFillColor = (country, hoveredCountry) => {
-        const countryName = country.properties.name.toUpperCase();
-        const isHovered = countryName === (hoveredCountry?.name || '').toUpperCase();
-        const encounters = country.properties.encounters;
-    
-        if (isHovered) {
-            return 'black';
-        } else if (encounters >= 1000000) {
-            return '#505C45';
-        } else if (encounters >= 100000) {
-            return '#667558';
-        } else if (encounters >= 10000) {
-            return '#7B8D6A';
-        } else if (encounters >= 1000) {
-            return '#93A87E';
-        } else if (encounters >= 101) {
-            return '#A9C191';
-        } else if (encounters >= 11) {
-            return '#BFDAA4';
-        } else if (encounters >= 1) {
-            return '#D4F3B7';
-        } else {
-            return 'white';
-        }
-    };    
 
     const CenterListener = () => {
         const map = useMapEvents({
@@ -108,14 +80,53 @@ const MapComponent = ({ startYear = 2014, endYear = 2024, optionsPaneVisible, ha
         });   
         return null;
     };
+    
+    const calculateFillColor = (country, hoveredCountry) => {
+        const countryName = country.properties.name.toUpperCase();
+        const encounters = country.properties.encounters;
+        const isHovered = countryName === (hoveredCountry?.name || '').toUpperCase();
+
+        switch (true) {
+            case isHovered:
+                return 'black';
+            case encounters >= 1000000:
+                return '#505C45';
+            case encounters >= 100000:
+                return '#667558';
+            case encounters >= 10000:
+                return '#7B8D6A';
+            case encounters >= 1000:
+                return '#93A87E';
+            case encounters >= 101:
+                return '#A9C191';
+            case encounters >= 11:
+                return '#BFDAA4';
+            case encounters >= 1:
+                return '#D4F3B7';
+            default:
+                return 'white';
+        }
+    };
 
     return (
         <>
-            <div style={{ height: isMobile ? 'calc(100vh - 60px)' : '100vh', zIndex: 2, position: 'relative', opacity: optionsPaneVisible ? '40%' : '100%' }}>
+            <div 
+                style={{ 
+                    height: isMobile ? 'calc(100vh - 60px)' : '100vh', 
+                    zIndex: 2, position: 'relative', 
+                    opacity: optionsPaneVisible ? '40%' : '100%' 
+                }}
+            >
                 <MapContainer 
                     center={centerPoint ? centerPoint : [25, 0]} 
-                    zoom={ zoomLevel} 
-                    style={{ height: '100vh', width: '100vw', zIndex: 1, position: 'absolute', fillOpacity: 0.4, }}
+                    zoom={zoomLevel} 
+                    style={{ 
+                        height: '100vh', 
+                        width: '100vw', 
+                        zIndex: 1, 
+                        position: 'absolute', 
+                        fillOpacity: 0.4 
+                    }}
                 >
                     <ZoomListener />
                     <CenterListener />

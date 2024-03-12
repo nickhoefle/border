@@ -79,5 +79,4 @@ const MapLegend = ({ switchOn }) => {
     );
   };
 
-
 export default MapLegend;

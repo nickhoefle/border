@@ -21,7 +21,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
     encountersByCountryData.forEach((row) => {
         if (
             selectedYearRange.includes(row["Fiscal Year"]) && 
-            country.name.toUpperCase() === row["Citizenship"].toUpperCase()
+            countryName.toUpperCase() === row["Citizenship"].toUpperCase()
         ) {
             sortedYearsObject[row["Fiscal Year"]] += row["Encounter Count"];
         }
@@ -61,8 +61,6 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                     colors: 'black', 
                     fontSize: isMobile ? '14px' : '17px',
                     fontWeight: 'bold', 
-                    textAlign: 'center', 
-                    zIndex: 0,
                 },
                 formatter: function (value) {
                     if (value === 0) {
@@ -74,7 +72,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
             axisBorder: {
                 show: false,
             },
-            tickAmount: 4,
+            tickAmount: 5,
         },
         markers: {
             size: 5,
@@ -84,12 +82,11 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
             offsetY: -6,
             style: {
                 fontSize: isMobile ? '14px' : '16px',
-                fontWeight: 1,
                 color: 'black',
-                paddingRight: '30px',
-                zIndex: 2,
             },
-            background: { enabled: false },
+            background: { 
+                enabled: false 
+            },
             formatter: function (val, opts) {
                 return val.toLocaleString()
             },
@@ -105,6 +102,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
             }
         }
     };
+
     const chartSeries = [
         {
             name: 'Encounters Per Year Per Country',
@@ -112,14 +110,9 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
         },
     ];
 
-    let chartWidth = '';
+    let chartWidth;
     const yearSpan = selectedYearRange.length;
-
-    if (yearSpan < 6 || !isMobile) {
-        chartWidth = '95%';
-    } else {
-        chartWidth = `${yearSpan * 16}%`;
-    }
+    yearSpan < 6 || !isMobile ? chartWidth = '95%' : chartWidth = `${yearSpan * 16}%`;
 
     return (
         <div id="hoverWrapper">
