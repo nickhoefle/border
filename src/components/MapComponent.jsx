@@ -52,7 +52,7 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
                 country.properties.encounters = 0;
             }
         });
-
+        console.log(uniqueCountries);
         return allCountriesGeoJsonData;
     }, [startYear, endYear]);
     
