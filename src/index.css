@@ -116,6 +116,10 @@ button {
   z-index: 3;
 }
 
+#leafletIcon {
+  padding: 0 5px 0 10px;
+}
+
 .leaflet-container {
   background-color: rgb(170, 211, 223) !important;
   z-index: 0;
@@ -215,6 +219,11 @@ button {
 
 #switchWrapper {
   margin-top: 24px;
+}
+
+#techIcons {
+  position: absolute;
+  right: 0;
 }
 
 #titleText {
