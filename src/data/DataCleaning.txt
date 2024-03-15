@@ -3,5 +3,9 @@ have 0, but are in uniqueCountries, there is a problem. Do find / replace in csv
 
 Examples: 
 
-//Need to change Czechoslovakia to Czech Rep
-//Need to handle Dem. 
+// Changed Czech Republic and Czechoslovakia to Czechia
+
+
+*/ Need to handle "KOREA" entries
+*/ Need to handle "SERBIA AND MONTENEGRO"
+*/ Need to handle "STATELESS"
