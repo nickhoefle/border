@@ -21,52 +21,45 @@ const MapLegend = ({ switchOn }) => {
         </div>
         <div className='splotchAndTextWrapper'>
           <span 
-            style={{ backgroundColor: switchOn ? 'rgb(177, 180, 168)' : 'rgb(80, 92, 69)' }}
+            style={{ backgroundColor: switchOn ? 'rgb(177, 180, 168)' : '#1D2C17' }}
             className='colorSplotch'
           ></span>
           <p className="legendLabel">1,000,000+</p>
         </div>
         <div className='splotchAndTextWrapper'>
           <span 
-            style={{ backgroundColor: switchOn ? 'rgb(186, 190, 175)' : 'rgb(102, 117, 88)' }}
+            style={{ backgroundColor: switchOn ? 'rgb(186, 190, 175)' : '#3E5631' }}
             className='colorSplotch'
           ></span>
           <p className="legendLabel">100,001 - 1,000,000</p>
         </div>
         <div className='splotchAndTextWrapper'>
           <span 
-            style={{ backgroundColor: switchOn ? 'rgb(194, 199, 182)' : 'rgb(123, 141, 106)' }}
+            style={{ backgroundColor: switchOn ? 'rgb(194, 199, 182)' : '#5F804B' }}
             className='colorSplotch'
           ></span>
           <p className="legendLabel">10,001 - 100,000</p>
         </div>
         <div className='splotchAndTextWrapper'>
           <span 
-            style={{ backgroundColor: switchOn ? 'rgb(204, 210, 190)' : 'rgb(147, 168, 126)' }}
+            style={{ backgroundColor: switchOn ? 'rgb(204, 210, 190)' : '#81AB64' }}
             className='colorSplotch'
           ></span>
           <p className="legendLabel">1,001 - 10,000</p>
         </div>
         <div className='splotchAndTextWrapper'>
           <span 
-            style={{ backgroundColor: switchOn ? 'rgb(213, 223, 191)' : 'rgb(169, 193, 145)' }}
+            style={{ backgroundColor: switchOn ? 'rgb(213, 223, 191)' : '#A2D57E' }}
             className='colorSplotch'
           ></span>
           <p className="legendLabel">101 - 1,000</p>
         </div>
         <div className='splotchAndTextWrapper'>
           <span 
-            style={{ backgroundColor: switchOn ? 'rgb(221, 230, 206)' : 'rgb(191, 218, 164)' }}
+            style={{ backgroundColor: switchOn ? 'rgb(221, 230, 206)' : '#C3FF98' }}
             className='colorSplotch'
           ></span>
-          <p className="legendLabel">11 - 100</p>
-        </div>
-        <div className='splotchAndTextWrapper'>
-          <span 
-            style={{ backgroundColor: switchOn ? 'rgb(230, 240, 213)' : 'rgb(212, 243, 183)' }}
-            className='colorSplotch'
-          ></span>
-          <p className="legendLabel">1 - 10</p>
+          <p className="legendLabel">1 - 100</p>
         </div>
         <div className='splotchAndTextWrapper'>
           <span 

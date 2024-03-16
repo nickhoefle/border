@@ -90,19 +90,17 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
             case isHovered:
                 return 'black';
             case encounters >= 1000000:
-                return '#505C45';
+                return '#1D2C17';
             case encounters >= 100000:
-                return '#667558';
+                return '#3E5631';
             case encounters >= 10000:
-                return '#7B8D6A';
+                return '#5F804B';
             case encounters >= 1000:
-                return '#93A87E';
-            case encounters >= 101:
-                return '#A9C191';
-            case encounters >= 11:
-                return '#BFDAA4';
+                return '#81AB64';
+            case encounters >= 100:
+                return '#A2D57E';
             case encounters >= 1:
-                return '#D4F3B7';
+                return '#C3FF98';
             default:
                 return 'white';
         }
