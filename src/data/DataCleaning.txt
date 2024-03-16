@@ -9,3 +9,7 @@ Examples:
 */ Need to handle "KOREA" entries
 */ Need to handle "SERBIA AND MONTENEGRO"
 */ Need to handle "STATELESS"
+*/ Need to handle "UNKNOWN"
+*/ Need to handle "YUGOSLAVIA"
+*/ Need to handle "USSR"
+

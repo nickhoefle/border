@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { MapContainer, GeoJSON, useMapEvents, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import HoverStrip from './HoverStrip';
-import allCountriesGeoJsonData from '../world.geo.json';
+import allCountriesGeoJsonData from '../data/world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 import MapLegend from './MapLegend';
 
