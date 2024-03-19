@@ -7,6 +7,7 @@ const Footer = () => {
         <div id='footerWrapper'>
             <a href='https://www.github.com/nickhoefle'>
                 <img 
+                    id='githubIcon'
                     src={'/border/icons/github-mark.png'} 
                     height='35px'
                     alt='github-icon'
