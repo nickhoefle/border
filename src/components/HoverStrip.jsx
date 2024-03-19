@@ -116,6 +116,11 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
 
     return (
         <div id="hoverWrapper">
+            <img 
+                src={`icons/close.svg`}
+                id='closeIcon'
+                alt='close-icon'
+            />
             <div id="nameAndCitizenshipWrapper">
                 <img
                     src={`/border/flags/${countryName.replace(/\s/g, "")}.png`}

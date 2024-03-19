@@ -21,6 +21,10 @@ button {
   justify-content: center;
 }
 
+#closeIcon {
+  display: none;
+}
+
 #closeOptionsPaneButton {
   width: 150px;
   padding: 10px;
@@ -245,6 +249,15 @@ button {
 }
 
 @media only screen and (max-width: 768px) {
+
+  #closeIcon {
+    height: 25px;
+    width: auto;
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
 
   #closeOptionsPaneButton {
     padding: 2px 10px 2px 10px;
