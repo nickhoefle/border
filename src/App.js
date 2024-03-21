@@ -46,7 +46,7 @@ function App() {
     setOptionsPaneVisible((optionsPaneVisible) => !optionsPaneVisible);
     const countriesOnMap = document.querySelectorAll('.leaflet-interactive');           
         countriesOnMap.forEach(country => {
-            country.style.fillOpacity = switchOn ? 0.4 : 1;
+            country.style.fillOpacity = switchOn ? 0.25 : 1;
         });
   }
 

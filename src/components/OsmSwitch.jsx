@@ -4,7 +4,7 @@ const OsmSwitch = ({ switchOn, toggleSwitch }) => {
 
     return (
         <div id="switchAndTextWrapper">
-            <p id="switchText">OpenStreetMap Layer</p>
+            <p id="switchText">Carto Map Layer</p>
             <div id="switchWrapper">
                 <Switch
                     onChange={toggleSwitch}

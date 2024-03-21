@@ -86,23 +86,32 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
         const encounters = country.properties.encounters;
         const isHovered = countryName === (hoveredCountry?.name || '').toUpperCase();
 
-        switch (true) {
-            case isHovered:
-                return 'black';
-            case encounters >= 1000000:
-                return '#1D2C17';
-            case encounters >= 100000:
-                return '#3E5631';
-            case encounters >= 10000:
-                return '#5F804B';
-            case encounters >= 1000:
-                return '#81AB64';
-            case encounters >= 100:
-                return '#A2D57E';
-            case encounters >= 1:
-                return '#C3FF98';
-            default:
-                return 'white';
+        if (!switchOn) {
+            switch (true) {
+                case isHovered:
+                    return 'black';
+                case encounters >= 1000000:
+                    return '#1D2C17';
+                case encounters >= 100000:
+                    return '#3E5631';
+                case encounters >= 10000:
+                    return '#5F804B';
+                case encounters >= 1000:
+                    return '#81AB64';
+                case encounters >= 100:
+                    return '#A2D57E';
+                case encounters >= 1:
+                    return '#C3FF98';
+                default:
+                    return 'white';
+            }
+        } else {
+            switch (true) {
+                case isHovered:
+                    return 'black';
+                default:
+                    return 'white';
+            }
         }
     };
 
@@ -123,15 +132,16 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
                         width: '100vw', 
                         zIndex: 1, 
                         position: 'absolute', 
-                        fillOpacity: 0.4 
+                        fillOpacity: 0.6 
                     }}
                 >
                     <ZoomListener />
                     <CenterListener />
                     { switchOn && (
                         <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/{style}/{z}/{x}/{y}.png"
+                            attribution='&copy; <a href="https://carto.com/">Carto</a>'
+                            style='light_all'
                         />
                     )}
                     <GeoJSON
@@ -150,10 +160,12 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
                         }}
                     />
                 </MapContainer>
-                <MapLegend 
-                    countriesGeoJsonWithEncounters={countriesGeoJsonWithEncounters} 
-                    switchOn={switchOn}
-                />
+                { !switchOn &&
+                    <MapLegend 
+                        countriesGeoJsonWithEncounters={countriesGeoJsonWithEncounters} 
+                        switchOn={switchOn}
+                    />
+                }
             </div>
             {hoveredCountry && (
                 <HoverStrip 

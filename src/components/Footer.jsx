@@ -32,13 +32,6 @@ const Footer = () => {
                 JSON
             </Link>
             <div id='techIcons'>
-                <a href='https://www.openstreetmap.org/'>
-                    <img 
-                        src={'/border/icons/osm.png'} 
-                        height='30px'
-                        alt='osm-icon'
-                    />
-                </a>
                 <a 
                     href='https://leafletjs.com/'
                     id='leafletIcon'
