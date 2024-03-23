@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import { MapContainer, GeoJSON, useMapEvents, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import HoverStrip from './HoverStrip';
-import CalcEncountersPerCountry from '../helpers/CalcEncountersPerCountry';
+import CalcEncountersPerCountry from '../helpers/AddTotalEncountersToGeoJson';
 import allCountriesGeoJsonData from '../data/world.geo.json';
 import encountersSpreadsheet from '../data/FY07-23.json';
 import MapLegend from './MapLegend';

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-const CalcEncountersPerCountry = ({ startYear, endYear, encountersSpreadsheet, allCountriesGeoJsonData }) => {
+const AddTotalEncountersToGeoJson = ({ startYear, endYear, encountersSpreadsheet, allCountriesGeoJsonData }) => {
     return useMemo(() => {
         const uniqueCountries = new Set();
         const countriesAndEncounters = {};
@@ -35,4 +35,4 @@ const CalcEncountersPerCountry = ({ startYear, endYear, encountersSpreadsheet, a
     }, [startYear, endYear, encountersSpreadsheet, allCountriesGeoJsonData]);
 };
 
-export default CalcEncountersPerCountry;
+export default AddTotalEncountersToGeoJson;

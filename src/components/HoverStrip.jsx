@@ -1,33 +1,12 @@
-import encountersByCountryData from '../data/FY07-23.json';
+import CalcEncountersPerYear from '../helpers/CalcCountryEncountersPerYear';
 import ReactApexChart from 'react-apexcharts';
 import React from 'react';
 
 const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
 
     const countryName = country.name;
-    const encounters = country.encounters;
-    const selectedYearRange = [];
-
-    for (let i=startYear; i<=endYear; i++) {
-        selectedYearRange.push(i);
-    }
-
-    const sortedYearsObject = selectedYearRange.reduce((encounters, year) => {
-        const numericYear = parseInt(year);
-        encounters[numericYear] = 0;
-        return encounters;
-    }, {});
-
-    encountersByCountryData.forEach((row) => {
-        if (
-            selectedYearRange.includes(row["Fiscal Year"]) && 
-            countryName.toUpperCase() === row["Citizenship"].toUpperCase()
-        ) {
-            sortedYearsObject[row["Fiscal Year"]] += row["Encounter Count"];
-        }
-    });
-
-    const sortedEncountersArray = Object.keys(sortedYearsObject).map(key => sortedYearsObject[key]);
+    const totalEncounters = country.encounters;
+    const data = CalcEncountersPerYear({ startYear, endYear, country });
 
     const chartOptions = {
         colors:['black', 'black', 'black', 'black', 'black', 'black'],
@@ -41,7 +20,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
             enabled: false,
         },
         xaxis: {
-            categories: selectedYearRange,
+            categories: data.selectedYearRange,
             offsetY: 12,
             labels: {
                 show: true,
@@ -105,13 +84,13 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
 
     const chartSeries = [
         {
-            name: 'Encounters Per Year Per Country',
-            data: sortedEncountersArray
+            name: 'Encounters Per Year By Country',
+            data: data.sortedEncountersArray,
         },
     ];
 
     let chartWidth;
-    const yearSpan = selectedYearRange.length;
+    const yearSpan = data.selectedYearRange.length;
     yearSpan < 6 || !isMobile ? chartWidth = '95%' : chartWidth = `${yearSpan * 16}%`;
 
     return (
@@ -128,7 +107,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                     id="flagImage"
                 />
                 <h1 id="countryName">{countryName}</h1>
-                <h2 id="encountersText">{encounters.toLocaleString()}</h2>
+                <h2 id="encountersText">{totalEncounters.toLocaleString()}</h2>
                 <strong id="nationwideEncountersText">NATIONWIDE ENCOUNTERS PER U.S. CBP DATA</strong>
             </div>
             <ReactApexChart
