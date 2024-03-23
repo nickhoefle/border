@@ -8,14 +8,15 @@ import encountersSpreadsheet from '../data/FY07-23.json';
 import MapLegend from './MapLegend';
 
 const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptionsPane, isMobile, handleSetZoom, zoomLevel, centerPoint, handleSetCenter, switchOn }) => {
+    
     const [hoveredCountry, setHoveredCountry] = useState(null);
     const countriesGeoJsonWithEncounters = CalcEncountersPerCountry({ startYear, endYear, encountersSpreadsheet, allCountriesGeoJsonData });
     
     const handleFeatureHover = (countryGeoJson) => {
-        const countryName = countryGeoJson.properties.name.toUpperCase();
+        let country = countryGeoJson.properties;
         setHoveredCountry({
-            name: countryName,
-            encounters: countryGeoJson.properties.encounters,
+            name: country.name.toUpperCase(),
+            encounters: country.encounters,
         });
         if (isMobile) {
             handleCloseOptionsPane();
@@ -89,24 +90,21 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
         <>
             <div 
                 style={{ 
+                    position: 'relative',  
                     height: isMobile ? 'calc(100vh - 60px)' : '100vh', 
-                    zIndex: 2, position: 'relative', 
                     opacity: optionsPaneVisible ? '40%' : '100%' 
                 }}
             >
                 <MapContainer 
-                    center={centerPoint ? centerPoint : [25, 0]} 
-                    zoom={zoomLevel} 
                     style={{ 
                         height: '100vh', 
                         width: '100vw', 
-                        zIndex: 1, 
                         position: 'absolute', 
                         fillOpacity: 0.6 
                     }}
+                    center={centerPoint ? centerPoint : [25, 0]} 
+                    zoom={zoomLevel} 
                 >
-                    <ZoomListener />
-                    <CenterListener />
                     { switchOn && (
                         <TileLayer
                             url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/{style}/{z}/{x}/{y}.png"
@@ -130,6 +128,8 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
                             });
                         }}
                     />
+                    <ZoomListener />
+                    <CenterListener />
                 </MapContainer>
                 { !switchOn &&
                     <MapLegend 
