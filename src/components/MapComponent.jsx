@@ -111,7 +111,8 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
                         <TileLayer
                             url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/{style}/{z}/{x}/{y}.png"
                             attribution='&copy; <a href="https://carto.com/">Carto</a>'
-                            style={{ style: 'light_all' }}
+                            // eslint-disable-next-line
+                            style='light_all'
                         />
                     )}
                     <GeoJSON
