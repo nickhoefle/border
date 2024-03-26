@@ -42,9 +42,6 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                     fontWeight: 'bold', 
                 },
                 formatter: function (value) {
-                    if (value === 0) {
-                        return;
-                    }
                     return Math.round(value).toLocaleString(); 
                 }
             },
@@ -66,8 +63,11 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
             background: { 
                 enabled: false 
             },
-            formatter: function (val, opts) {
-                return val.toLocaleString()
+            formatter: function (value, dataPoint) {
+                if (value === 0 && (dataPoint.dataPointIndex === 6 || dataPoint.dataPointIndex === 7)) {
+                    value = 'No data'
+                }
+                return value.toLocaleString()
             },
         },
         stroke: {
@@ -84,7 +84,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
 
     const chartSeries = [
         {
-            name: 'Encounters Per Year By Country',
+            name: 'Encounters Per Year Per Country',
             data: data.sortedEncountersArray,
         },
     ];
