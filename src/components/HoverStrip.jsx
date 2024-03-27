@@ -64,7 +64,7 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                 enabled: false 
             },
             formatter: function (value, dataPoint) {
-                if (value === 0 && (dataPoint.dataPointIndex === 6 || dataPoint.dataPointIndex === 7)) {
+                if (value === 0 && dataPoint.dataPointIndex === 6) {
                     value = 'No data'
                 }
                 return value.toLocaleString()
