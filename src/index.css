@@ -195,6 +195,10 @@ button {
   font-size: 17px;
 }
 
+#openOptionsPaneButton:hover {
+  background-color: rgb(233, 229, 229);
+}
+
 #optionsPaneWrapper {
   width: 100%; 
   z-index: 3;

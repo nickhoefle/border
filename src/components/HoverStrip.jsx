@@ -2,7 +2,7 @@ import CalcEncountersPerYear from '../helpers/CalcCountryEncountersPerYear';
 import ReactApexChart from 'react-apexcharts';
 import React from 'react';
 
-const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
+const HoverStrip =  ({ country, startYear, endYear, isMobile }) => {
 
     const countryName = country.name;
     const totalEncounters = country.encounters;
@@ -64,7 +64,10 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
                 enabled: false 
             },
             formatter: function (value, dataPoint) {
-                if (value === 0 && (dataPoint.dataPointIndex === 6 || dataPoint.dataPointIndex === 7)) {
+                if (
+                    data.selectedYearRange[dataPoint.dataPointIndex] === 2019 || 
+                    data.selectedYearRange[dataPoint.dataPointIndex] === 2020
+                ) {
                     value = 'No data'
                 }
                 return value.toLocaleString()
@@ -120,6 +123,6 @@ const HoverStrip = React.memo(({ country, startYear, endYear, isMobile }) => {
             />
         </div>
     );
-});
+};
 
 export default HoverStrip;

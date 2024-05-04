@@ -79,7 +79,7 @@ const MapComponent = ({ startYear, endYear, optionsPaneVisible, handleCloseOptio
         } else {
             switch (true) {
                 case isHovered:
-                    return 'black';
+                    return 'green';
                 default:
                     return 'white';
             }
